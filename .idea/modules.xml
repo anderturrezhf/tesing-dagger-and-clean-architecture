@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/TestingCleanArchitectureWithDaggerAndRxJava.iml" filepath="$PROJECT_DIR$/TestingCleanArchitectureWithDaggerAndRxJava.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app-business-rules/app-business-rules.iml" filepath="$PROJECT_DIR$/app-business-rules/app-business-rules.iml" />
+      <module fileurl="file://$PROJECT_DIR$/enterprise-business-rules/enterprise-business-rules.iml" filepath="$PROJECT_DIR$/enterprise-business-rules/enterprise-business-rules.iml" />
+      <module fileurl="file://$PROJECT_DIR$/presentation/presentation.iml" filepath="$PROJECT_DIR$/presentation/presentation.iml" />
+    </modules>
+  </component>
+</project>

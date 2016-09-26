@@ -1,0 +1,100 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+
+buildscript {
+    repositories {
+        jcenter()
+        mavenCentral()
+        maven { url "https://plugins.gradle.org/m2/" } //For the net.lgtt.gradle plugin
+    }
+
+    dependencies {
+        classpath 'com.android.tools.build:gradle:2.2.0'
+        classpath 'me.tatarka:gradle-retrolambda:3.3.0' //for using retrolambda with Java 6, 7
+        classpath 'me.tatarka.retrolambda.projectlombok:lombok.ast:0.2.3.a2' //a modified version of lombok ast that allows lint to run on java 8 sources without error
+        classpath 'com.neenbedankt.gradle.plugins:android-apt:1.8' //A Gradle plugin for Android that will set correctly the Annotators Processor generated code
+        classpath 'net.ltgt.gradle:gradle-apt-plugin:0.9' //plugin for easier/safier use of Java annotation processors on Java modules
+
+        /**
+         * We added evant's lombok.ast replacement to get around the highly annoying lint issues we saw
+         * due the version of lombok.ast that google ships and depends on not knowing about java 8, which
+         * makes it bail hard on retrolambdas and method references.
+         *
+         * In order to actually use the replacement we also need to tell gradle to exclude android's version.
+         */
+        // Exclude the version that the android plugin depends on.
+        configurations.classpath.exclude group: 'com.android.tools.external.lombok'
+    }
+}
+
+allprojects {
+    repositories {
+        jcenter()
+        mavenCentral()
+        maven { url "https://plugins.gradle.org/m2/" } //For the net.lgtt.gradle plugin
+    }
+
+    gradle.projectsEvaluated {
+        tasks.withType(JavaCompile) {
+            // We want all warnings, except for annotation processor warnings, since many annotations
+            // are just markers and will never be claimed by any processor.
+            options.compilerArgs << "-Xlint:all" << "-Xlint:-processing"
+        }
+    }
+}
+
+//Shared configuration for all non-android modules
+configure(subprojects - project(':presentation')) {
+
+    apply plugin: 'java'
+    apply plugin: 'net.ltgt.apt'
+
+    //source for Java version
+    compileJava {
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
+    }
+
+    //Shared dependencies between ONLY JAVA modules go here
+    dependencies {
+        apt 'com.google.dagger:dagger-compiler:2.6' //dagger compiler for Java modules using the net.ltgt plugin
+    }
+}
+
+//Shared configuration for ALL modules (including the Android one)
+subprojects {
+    //Here goes all the configurations for the modules. Compile, testCompile, ....
+    configurations {
+        compile
+        testCompile
+    }
+
+    apply plugin: 'me.tatarka.retrolambda'
+
+    retrolambda {
+        javaVersion JavaVersion.VERSION_1_7
+    }
+
+    //Shared dependencies between ALL modules go here
+    dependencies {
+        compile 'com.google.dagger:dagger:2.6'
+        compile 'javax.annotation:jsr250-api:1.0'
+        compile 'io.reactivex:rxjava:1.1.7'
+    }
+}
+
+//Specific dependencies declarations for non-Android modules
+project(":enterprise-business-rules") {
+    dependencies {
+        compile fileTree(include: ['*.jar'], dir: 'libs')
+    }
+}
+
+project(":app-business-rules") {
+    dependencies {
+        compile project(':enterprise-business-rules')
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
