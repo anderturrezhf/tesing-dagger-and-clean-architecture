@@ -52,7 +52,6 @@ public class MainActivity extends BaseActivity implements MVPMainActivity.View {
 
     @Override
     protected void onStop() {
-
         eventBus.unregister(this);
         super.onStop();
     }
