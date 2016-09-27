@@ -27,7 +27,6 @@ import butterknife.OnClick;
 public class MainActivity extends BaseActivity implements MVPMainActivity.View {
 
     @Inject protected MVPMainActivity.Presenter presenter;
-    @Inject protected FragmentManager fragmentManager;
 
     @BindView(R.id.mainActivityRegisterNewUserButton) protected Button mainButton;
     @BindView(R.id.mainActivityCurrentUserTextView) protected TextView mainTextView;
