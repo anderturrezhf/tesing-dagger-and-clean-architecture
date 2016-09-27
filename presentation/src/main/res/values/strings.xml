@@ -16,4 +16,12 @@
     <string name="new_user_frafgment_nickname_text_view">Alias: </string>
     <string name="new_user_fragment_save_button_text">Save user</string>
     <string name="new_user_fragment_show_empty_field_error">Please, fill all the fields for continue the registration</string>
+
+    <!-- User Info Fragment -->
+    <string name="user_info_fragment_title">Hi! I am %s</string>
+    <string name="user_info_fragment_age">I am %i old </string>
+    <string name="user_info_fragment_city">I live in the city of %s</string>
+    <string name="user_info_fragment_alias">and I am als known as %s on different places</string>
+    <string name="user_info_fragment_bottom_text">Maybe you have heard about me</string>
+    <string name="user_info_fragment_no_current_user">Ooops! No current user</string>
 </resources>

@@ -8,6 +8,7 @@
     <dimen name="new_user_fragment_title_top_margin">25dp</dimen>
     <dimen name="new_user_fragment_margin_between_fields">20dp</dimen>
     <dimen name="new_user_fragment_margin_bewteen_edit_text_and_text_view">8dp</dimen>
+    <dimen name="user_info_fragment_margin_between_info_text_views">90dp</dimen>
 
     <!-- Paddings -->
     <dimen name="new_user_fragment_layout_padding">5dp</dimen>
