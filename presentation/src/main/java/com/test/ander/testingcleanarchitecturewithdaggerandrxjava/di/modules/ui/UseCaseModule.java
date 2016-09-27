@@ -1,8 +1,10 @@
 package com.test.ander.testingcleanarchitecturewithdaggerandrxjava.di.modules.ui;
 
-import com.example.features.getuser.GetUserInteractor;
-import com.example.features.getuser.GetUserUseCase;
+import com.example.features.getuser.newregistration.RegisterNewUserInteractor;
+import com.example.features.getuser.newregistration.RegisterNewUserUseCase;
 import com.example.customscopes.PerActivity;
+import com.example.features.getuser.userinfo.UserInfoInteractor;
+import com.example.features.getuser.userinfo.UserInfoUseCase;
 
 import dagger.Module;
 import dagger.Provides;
@@ -19,7 +21,13 @@ public class UseCaseModule {
 
     @PerActivity
     @Provides
-    GetUserUseCase providesGetUserUserCase(GetUserInteractor interactor){
+    RegisterNewUserUseCase providesGetUserUserCase(RegisterNewUserInteractor interactor){
+        return interactor;
+    }
+
+    @PerActivity
+    @Provides
+    UserInfoUseCase providesUserInfoUseCase(UserInfoInteractor interactor){
         return interactor;
     }
 }

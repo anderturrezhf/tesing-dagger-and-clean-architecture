@@ -15,6 +15,10 @@ public interface MVPMainActivity {
 
         void hideNewUserFragment();
 
+        void showCurrentUserInfofragment();
+
+        void hideCurrentUserInfofragment();
+
         void setNewCurrentUser(UserEntity user);
 
         void saveCurrentUserOnPreferences(UserEntity currentuser);
@@ -38,5 +42,7 @@ public interface MVPMainActivity {
         void activityOnDestroy();
 
         void backButtonPressed();
+
+
     }
 }

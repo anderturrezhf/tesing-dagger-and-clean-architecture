@@ -11,8 +11,9 @@ import android.widget.Toast;
 import com.example.features.getuser.UserEntity;
 import com.test.ander.testingcleanarchitecturewithdaggerandrxjava.R;
 import com.test.ander.testingcleanarchitecturewithdaggerandrxjava.features.activities.MVPMainActivity;
-import com.test.ander.testingcleanarchitecturewithdaggerandrxjava.features.getuser.NewUserFragment;
-import com.test.ander.testingcleanarchitecturewithdaggerandrxjava.features.getuser.NewUserSavedEvent;
+import com.test.ander.testingcleanarchitecturewithdaggerandrxjava.features.getuser.newregistration.NewUserFragment;
+import com.test.ander.testingcleanarchitecturewithdaggerandrxjava.features.getuser.newregistration.NewUserSavedEvent;
+import com.test.ander.testingcleanarchitecturewithdaggerandrxjava.features.getuser.userinfo.UserInfoFragment;
 import com.test.ander.testingcleanarchitecturewithdaggerandrxjava.ui.basecomponents.BaseActivity;
 
 import org.greenrobot.eventbus.Subscribe;
@@ -32,6 +33,7 @@ public class MainActivity extends BaseActivity implements MVPMainActivity.View {
     @BindView(R.id.mainActivityCurrentUserTextView) protected TextView mainTextView;
 
     private NewUserFragment newUserFragment;
+    private UserInfoFragment userInfoFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,10 +84,13 @@ public class MainActivity extends BaseActivity implements MVPMainActivity.View {
     @Override
     protected void initFragmentsIfNecessary() {
         newUserFragment = (NewUserFragment) Fragment.instantiate(this, NewUserFragment.class.getName());
+        userInfoFragment = (UserInfoFragment) Fragment.instantiate(this, UserInfoFragment.class.getName());
 
         fragmentManager.beginTransaction()
                 .add(R.id.fragment_container, newUserFragment, NewUserFragment.class.getName())
                 .hide(newUserFragment)
+                .add(R.id.fragment_container, userInfoFragment, UserInfoFragment.class.getName())
+                .hide(userInfoFragment)
                 .commit();
     }
 
@@ -132,8 +137,6 @@ public class MainActivity extends BaseActivity implements MVPMainActivity.View {
         } else {
             mainTextView.setText(resources.getString(R.string.main_activity_no_user_text));
         }
-
-
     }
 
     @Override
@@ -165,6 +168,24 @@ public class MainActivity extends BaseActivity implements MVPMainActivity.View {
         fragmentManager.beginTransaction()
                 .setCustomAnimations(R.anim.enter_from_right, R.anim.exit_to_right)
                 .hide(newUserFragment)
+                .commit();
+        fragmentManager.popBackStack();
+    }
+
+    @Override
+    public void showCurrentUserInfofragment() {
+        fragmentManager.beginTransaction()
+                .setCustomAnimations(R.anim.enter_from_left, R.anim.exit_to_left)
+                .show(userInfoFragment)
+                .addToBackStack(null)
+                .commit();
+    }
+
+    @Override
+    public void hideCurrentUserInfofragment() {
+        fragmentManager.beginTransaction()
+                .setCustomAnimations(R.anim.enter_from_right, R.anim.exit_to_right)
+                .hide(userInfoFragment)
                 .commit();
         fragmentManager.popBackStack();
     }
