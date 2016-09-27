@@ -2,7 +2,7 @@ package com.test.ander.testingcleanarchitecturewithdaggerandrxjava.features.getu
 
 import android.content.res.Resources;
 
-import com.example.features.getuser.GetUserUseCase;
+import com.example.features.getuser.newregistration.RegisterNewUserUseCase;
 import com.example.features.getuser.UserEntity;
 import com.test.ander.testingcleanarchitecturewithdaggerandrxjava.R;
 import com.example.customscopes.PerActivity;
@@ -15,12 +15,12 @@ import javax.inject.Inject;
 @PerActivity
 public class NewUserFragmentPresenter implements MVPNewUserRegistration.Presenter {
 
-    private GetUserUseCase interactor;
+    private RegisterNewUserUseCase interactor;
     private MVPNewUserRegistration.View view;
     private Resources resources;
 
     @Inject
-    public NewUserFragmentPresenter(GetUserUseCase interactor, Resources resources) {
+    public NewUserFragmentPresenter(RegisterNewUserUseCase interactor, Resources resources) {
         this.interactor = interactor;
         this.resources = resources;
     }

@@ -12,7 +12,7 @@ import rx.Observable;
  * Created by Ander Túrrez on 24/09/16.
  */
 @PerActivity
-public class RegisterNewUserInteractor implements GetUserUseCase{
+public class RegisterNewUserInteractor implements RegisterNewUserUseCase {
 
     private UserRepository userRepository;
 
