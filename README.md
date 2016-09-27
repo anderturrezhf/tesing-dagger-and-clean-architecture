@@ -2,7 +2,7 @@
 project on gradle files and structure for a clean architecture with the dependencies you need.
 
 2. Architecture is based on Uncle Bob's Clean Architecture and uses Dagger as dependency injection
-framework. I have chosen to use 3 layers: presentation (Android module) and 2 Vava modules where
+framework. I have chosen to use 3 layers: presentation (Android module) and 2 Java modules where
 goes the application related stuff (app-business-rules) and the models (Repository patterns and
 POJOs according to possible backend logic go here)
 
