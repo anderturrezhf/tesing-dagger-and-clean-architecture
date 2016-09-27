@@ -3,8 +3,8 @@ project on gradle files and structure for a clean architecture with the dependen
 
 2. Architecture is based on Uncle Bob's Clean Architecture and uses Dagger as dependency injection
 framework. I have chosen to use 3 layers: presentation (Android module) and 2 Java modules where
-goes the application related stuff (app-business-rules) and the models (Repository patterns and
-POJOs according to possible backend logic go here)
+goes the application related logic implementation (app-business-rules) and the models,
+repository pattern, POJOs according to possible backend logic and other abstractions (enterprise-business-rules)
 
 3. We have to work always with interfaces, not with the object directly in order to preserve
 the architecture correct. That's why on Dagger the return type is always the interface.
