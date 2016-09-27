@@ -1,4 +1,4 @@
-package com.test.ander.testingcleanarchitecturewithdaggerandrxjava.features.getuser;
+package com.test.ander.testingcleanarchitecturewithdaggerandrxjava.features.getuser.newregistration;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
