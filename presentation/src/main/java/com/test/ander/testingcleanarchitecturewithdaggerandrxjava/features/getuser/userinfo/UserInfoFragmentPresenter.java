@@ -28,7 +28,7 @@ public class UserInfoFragmentPresenter implements MVPCurrentUserInfo.Presenter {
     @Override
     public void updateUserInfo() {
         this.interactor.getCurrentUserInfo()
-                .subscribe(userEntity -> this.updateCurrentUserInfo(userEntity));
+                .subscribe(this::updateCurrentUserInfo);
     }
 
     private void updateCurrentUserInfo(UserEntity currentUser){

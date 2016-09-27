@@ -38,7 +38,7 @@ public class UserDataRepository implements UserRepository {
     @Override
     public Observable<UserEntity> saveUser(UserEntity user) {
         return this.userStoreFactory.create().saveUserToLocalCache(user)
-                .doOnNext(userEntity -> this.setCurrentUser(userEntity));
+                .doOnNext(this::setCurrentUser);
     }
 
     @Override
