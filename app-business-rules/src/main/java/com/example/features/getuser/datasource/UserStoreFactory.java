@@ -22,7 +22,7 @@ public class UserStoreFactory {
     /**
      * Maybe think on a better way of cheking if use Local or Cloud.
      * Not 100% convinced of this aproach
-     * @return
+     * @return UserStore according to what is needed
      */
     public UserStore create(){
         //For now, return only Local

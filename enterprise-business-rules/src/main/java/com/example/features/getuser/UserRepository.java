@@ -2,15 +2,21 @@ package com.example.features.getuser;
 
 import java.util.List;
 
+import rx.Observable;
+
 /**
  * Created by Ander Túrrez on 25/09/16.
  */
 
 public interface UserRepository {
 
-    UserEntity getUser(int id);
+    Observable<UserEntity> getUser(String id);
 
     List<UserEntity> getAllUsers();
 
-    void saveUser(UserEntity user);
+    Observable<UserEntity> saveUser(UserEntity user);
+
+    Observable<UserEntity> getCurrentUser();
+
+    void setCurrentUser(UserEntity userEntity);
 }

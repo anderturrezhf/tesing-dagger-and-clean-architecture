@@ -5,6 +5,8 @@ import com.example.features.getuser.UserEntity;
 
 import java.util.List;
 
+import rx.Observable;
+
 /**
  * Created by Ander Túrrez on 25/09/16.
  */
@@ -18,7 +20,7 @@ public class LocalUserStore implements UserStore {
     }
 
     @Override
-    public UserEntity entityUserDetails(int id) {
+    public Observable<UserEntity> entityUserDetails(String id) {
         return this.userCache.getUserById(id);
     }
 
@@ -28,7 +30,7 @@ public class LocalUserStore implements UserStore {
     }
 
     @Override
-    public void saveUserToLocalCache(UserEntity user) {
-        this.userCache.saveUserToLocalCache(user);
+    public Observable<UserEntity> saveUserToLocalCache(UserEntity user) {
+        return this.userCache.saveUserToLocalCache(user);
     }
 }

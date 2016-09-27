@@ -1,8 +1,10 @@
 package com.test.ander.testingcleanarchitecturewithdaggerandrxjava.di.modules.ui;
 
 import com.example.customscopes.PerActivity;
-import com.test.ander.testingcleanarchitecturewithdaggerandrxjava.features.getuser.GetUserPresenter;
-import com.test.ander.testingcleanarchitecturewithdaggerandrxjava.features.getuser.MVPGetUser;
+import com.test.ander.testingcleanarchitecturewithdaggerandrxjava.features.activities.MVPMainActivity;
+import com.test.ander.testingcleanarchitecturewithdaggerandrxjava.features.activities.MainActivityPresenter;
+import com.test.ander.testingcleanarchitecturewithdaggerandrxjava.features.getuser.NewUserFragmentPresenter;
+import com.test.ander.testingcleanarchitecturewithdaggerandrxjava.features.getuser.MVPNewUserRegistration;
 
 import dagger.Module;
 import dagger.Provides;
@@ -18,7 +20,13 @@ public class PresenterModule {
 
     @PerActivity
     @Provides
-    MVPGetUser.Presenter providesMVPPresenter(GetUserPresenter getUserPresenter){
-        return getUserPresenter;
+    MVPNewUserRegistration.Presenter providesMVPGetUserPresenter(NewUserFragmentPresenter newUserFragmentPresenter){
+        return newUserFragmentPresenter;
+    }
+
+    @PerActivity
+    @Provides
+    MVPMainActivity.Presenter providesMVPMainActivityPresenter(MainActivityPresenter mainActivityPresenter){
+        return mainActivityPresenter;
     }
 }

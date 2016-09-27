@@ -2,4 +2,22 @@
     <!-- Default screen margins, per the Android Design guidelines. -->
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
+
+    <!-- Margins-->
+    <dimen name="current_user_textviews_bottom_margin">15dp</dimen>
+    <dimen name="new_user_fragment_title_top_margin">25dp</dimen>
+    <dimen name="new_user_fragment_margin_between_fields">20dp</dimen>
+    <dimen name="new_user_fragment_margin_bewteen_edit_text_and_text_view">8dp</dimen>
+
+    <!-- Paddings -->
+    <dimen name="new_user_fragment_layout_padding">5dp</dimen>
+    <dimen name="button_with_background_padding">10dp</dimen>
+
+    <!-- Text Sizes-->
+    <dimen name="new_user_fragment_title_size">24sp</dimen>
+    <dimen name="new_user_fragment_fields_text_view_size">16sp</dimen>
+    <dimen name="new_user_fragment_fields_edit_text_size">16sp</dimen>
+
+    <!-- Sizes-->
+    <dimen name="new_user_fragment_fields_text_view_width">80dp</dimen>
 </resources>

@@ -2,15 +2,17 @@ package com.example.features.getuser;
 
 import java.util.List;
 
+import rx.Observable;
+
 /**
  * Created by Ander Túrrez on 25/09/16.
  */
 
 public interface UserCache {
 
-    void saveUserToLocalCache(UserEntity user);
-    UserEntity getUserById(int id);
+    Observable<UserEntity> saveUserToLocalCache(UserEntity user);
+    Observable<UserEntity> getUserById(String id);
     void deleteLocalCache();
-    boolean existsUserOnLocalCache(int userId);
+    boolean existsUserOnLocalCache(String userId);
     List<UserEntity> getAllUsersOnLocalCache();
 }

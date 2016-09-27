@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:background="@drawable/new_user_fragment_bg"
+    android:padding="@dimen/new_user_fragment_layout_padding">
+
+    <TextView
+        android:text="@string/new_user_fragment_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/new_user_fragment_title_top_margin"
+        android:textSize="@dimen/new_user_fragment_title_size"
+        android:id="@+id/newUserTextViewTitle"
+        android:textColor="@color/color_black"
+        android:textStyle="normal|bold" />
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/newUserTextViewTitle"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/new_user_fragment_title_top_margin"
+        android:id="@+id/newUserFragmentFieldsContainer"
+        android:layout_marginBottom="@dimen/new_user_fragment_title_top_margin">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/new_user_fragment_margin_between_fields">
+
+            <TextView
+                android:text="@string/new_user_fragment_name_text_view"
+                android:layout_width="@dimen/new_user_fragment_fields_text_view_width"
+                android:layout_height="wrap_content"
+                android:id="@+id/newUserFragmentNameTextView"
+                android:gravity="center_vertical"
+                android:textSize="@dimen/new_user_fragment_fields_text_view_size"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="@dimen/new_user_fragment_margin_bewteen_edit_text_and_text_view"
+                android:layout_marginEnd="@dimen/new_user_fragment_margin_bewteen_edit_text_and_text_view"
+                android:textStyle="normal|bold" />
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName"
+                android:ems="10"
+                android:id="@+id/newUserFragmentNameEditText"
+                android:textSize="@dimen/new_user_fragment_fields_edit_text_size"
+                android:gravity="center"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_toRightOf="@+id/newUserFragmentNameTextView"
+                android:layout_toEndOf="@+id/newUserFragmentNameTextView" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/new_user_fragment_margin_between_fields">
+
+            <TextView
+                android:text="@string/new_user_fragment_age_text_view"
+                android:layout_width="@dimen/new_user_fragment_fields_text_view_width"
+                android:layout_height="wrap_content"
+                android:id="@+id/newUserFragmentAgeTextView"
+                android:gravity="center_vertical"
+                android:textSize="@dimen/new_user_fragment_fields_text_view_size"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="@dimen/new_user_fragment_margin_bewteen_edit_text_and_text_view"
+                android:layout_marginEnd="@dimen/new_user_fragment_margin_bewteen_edit_text_and_text_view"
+                android:textStyle="normal|bold" />
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:ems="10"
+                android:id="@+id/newUserFragmentAgeEditText"
+                android:textSize="@dimen/new_user_fragment_fields_edit_text_size"
+                android:gravity="center"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_toRightOf="@+id/newUserFragmentAgeTextView"
+                android:layout_toEndOf="@+id/newUserFragmentAgeTextView" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/new_user_fragment_margin_between_fields">
+
+            <TextView
+                android:text="@string/new_user_fragment_city_text_view"
+                android:layout_width="@dimen/new_user_fragment_fields_text_view_width"
+                android:layout_height="wrap_content"
+                android:id="@+id/newUserFragmentCityTextView"
+                android:gravity="center_vertical"
+                android:textSize="@dimen/new_user_fragment_fields_text_view_size"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="@dimen/new_user_fragment_margin_bewteen_edit_text_and_text_view"
+                android:layout_marginEnd="@dimen/new_user_fragment_margin_bewteen_edit_text_and_text_view"
+                android:textStyle="normal|bold" />
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName"
+                android:ems="10"
+                android:id="@+id/newUserFragmentCityEditText"
+                android:textSize="@dimen/new_user_fragment_fields_edit_text_size"
+                android:gravity="center"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_toRightOf="@+id/newUserFragmentCityTextView"
+                android:layout_toEndOf="@+id/newUserFragmentCityTextView" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/new_user_fragment_margin_between_fields">
+
+            <TextView
+                android:text="@string/new_user_frafgment_nickname_text_view"
+                android:layout_width="@dimen/new_user_fragment_fields_text_view_width"
+                android:layout_height="wrap_content"
+                android:id="@+id/newUserFragmentAliasTextView"
+                android:gravity="center_vertical"
+                android:textSize="@dimen/new_user_fragment_fields_text_view_size"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="@dimen/new_user_fragment_margin_bewteen_edit_text_and_text_view"
+                android:layout_marginEnd="@dimen/new_user_fragment_margin_bewteen_edit_text_and_text_view"
+                android:textStyle="normal|bold" />
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName"
+                android:ems="10"
+                android:id="@+id/newUserFragmentAliasEditText"
+                android:textSize="@dimen/new_user_fragment_fields_edit_text_size"
+                android:gravity="center"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:layout_toRightOf="@+id/newUserFragmentAliasTextView"
+                android:layout_toEndOf="@+id/newUserFragmentAliasTextView" />
+
+        </RelativeLayout>
+    </LinearLayout>
+
+    <Button
+        android:text="@string/new_user_fragment_save_button_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/button_with_background_padding"
+        android:id="@+id/newUserFragmentSaveUserButton"
+        android:layout_below="@id/newUserFragmentFieldsContainer"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/rounded_corners_button"
+        android:textColor="@color/color_white"/>
+</RelativeLayout>

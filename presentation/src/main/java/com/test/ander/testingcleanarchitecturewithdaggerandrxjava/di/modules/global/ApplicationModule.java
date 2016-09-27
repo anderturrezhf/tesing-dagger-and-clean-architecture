@@ -6,6 +6,7 @@ import android.support.annotation.NonNull;
 
 import com.example.features.getuser.UserCache;
 import com.example.features.getuser.datasource.UserDataCache;
+import com.google.gson.Gson;
 import com.test.ander.testingcleanarchitecturewithdaggerandrxjava.ui.CustomApplication;
 
 import org.greenrobot.eventbus.EventBus;
@@ -55,4 +56,11 @@ public class ApplicationModule {
     UserCache providesUserCache(UserDataCache userDataCache){
         return userDataCache;
     }
+
+    @Singleton
+    @Provides
+    Gson providesGson(){
+        return new Gson();
+    }
+
 }

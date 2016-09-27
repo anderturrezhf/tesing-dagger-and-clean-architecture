@@ -2,72 +2,170 @@ package com.test.ander.testingcleanarchitecturewithdaggerandrxjava.ui;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.features.getuser.UserEntity;
 import com.test.ander.testingcleanarchitecturewithdaggerandrxjava.R;
-import com.test.ander.testingcleanarchitecturewithdaggerandrxjava.di.modules.global.ApplicationModule;
-import com.test.ander.testingcleanarchitecturewithdaggerandrxjava.features.getuser.GetUserPresenter;
-import com.test.ander.testingcleanarchitecturewithdaggerandrxjava.features.getuser.MVPGetUser;
+import com.test.ander.testingcleanarchitecturewithdaggerandrxjava.features.activities.MVPMainActivity;
+import com.test.ander.testingcleanarchitecturewithdaggerandrxjava.features.getuser.NewUserFragment;
+import com.test.ander.testingcleanarchitecturewithdaggerandrxjava.features.getuser.NewUserSavedEvent;
 import com.test.ander.testingcleanarchitecturewithdaggerandrxjava.ui.basecomponents.BaseActivity;
 
-import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
 
 import javax.inject.Inject;
-import javax.inject.Named;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class MainActivity extends BaseActivity implements MVPGetUser.View {
+public class MainActivity extends BaseActivity implements MVPMainActivity.View {
 
-    @Inject @Named(ApplicationModule.DEFAULT_PREFERENCES) protected SharedPreferences sharedPreferences;
-    @Inject protected EventBus eventBus;
-    @Inject protected MVPGetUser.Presenter presenter;
+    @Inject protected MVPMainActivity.Presenter presenter;
+    @Inject protected FragmentManager fragmentManager;
 
-    @BindView(R.id.mainActivityButton) protected Button mainButton;
-    @BindView(R.id.mainActivityTextView) protected TextView mainTextView;
-    @BindView(R.id.mainActivityNewUserEditText) protected EditText mainEditText;
+    @BindView(R.id.mainActivityRegisterNewUserButton) protected Button mainButton;
+    @BindView(R.id.mainActivityCurrentUserTextView) protected TextView mainTextView;
+
+    private NewUserFragment newUserFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         ButterKnife.bind(this);
-        injectDependencies();
+        initDependencies();
+        initFragmentsIfNecessary();
         presenter.setView(this);
+        presenter.activityOnCreate();
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        eventBus.register(this);
+    }
+
+    @Override
+    protected void onStop() {
+
+        eventBus.unregister(this);
+        super.onStop();
+    }
+
+    @Override
+    protected void onDestroy() {
+        presenter.activityOnDestroy();
+        super.onDestroy();
+    }
+
+    @Override
+    public void onBackPressed() {
+
+      presenter.backButtonPressed();
+    }
+
+    @Subscribe
+    public void onEvent(NewUserSavedEvent event){
+        presenter.newUserSaved(event.getUser());
+    }
+
+    //Superclass Abstract Methods
     @Override
     protected int getActivityLayout() {
         return R.layout.activity_main;
     }
 
     @Override
-    protected void injectDependencies() {
+    protected void initFragmentsIfNecessary() {
+        newUserFragment = (NewUserFragment) Fragment.instantiate(this, NewUserFragment.class.getName());
+
+        fragmentManager.beginTransaction()
+                .add(R.id.fragment_container, newUserFragment, NewUserFragment.class.getName())
+                .hide(newUserFragment)
+                .commit();
+    }
+
+    @Override
+    protected void initDependencies() {
         getActivityComponent().inject(this);
     }
 
-    @OnClick(R.id.mainActivityButton)
-    void performClick(){
-        presenter.getNewUser();
+    //Layout Listeners Elements Methods
+    @OnClick(R.id.mainActivityRegisterNewUserButton)
+    void performClick() {
+        presenter.showCreateNewUserFragment();
+    }
+
+
+    //View Methods
+    @Override
+    public void setNewCurrentUser(UserEntity user) {
+        this.mainTextView.setText(user.getName());
     }
 
     @Override
-    public void setNewUserOnTextView(String newUser) {
-        this.mainEditText.setText("");
-        this.mainTextView.setText(newUser);
+    public void saveCurrentUserOnPreferences(UserEntity currentuser) {
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+
+        if(currentuser == null){
+            editor.putString(resources.getString(R.string.current_user_preferences_id), resources.getString(R.string.main_activity_no_user_text));
+        } else {
+            editor.putString(resources.getString(R.string.current_user_preferences_id), currentuser.getAlias());
+            editor.putString(currentuser.getAlias(), gson.toJson(currentuser));
+        }
+
+        editor.commit();
     }
 
     @Override
-    public String getUserName() {
-        return mainEditText.getText().toString();
+    public void getPreviousUserFromPreferencesIfAnyAndPutOnTheLabel() {
+        String previousUserId = sharedPreferences.getString(resources.getString(R.string.current_user_preferences_id), resources.getString(R.string.main_activity_no_user_text));
+
+        if(!previousUserId.equals(resources.getString(R.string.main_activity_no_user_text))){
+            String previousCurrentUserAsString = sharedPreferences.getString(previousUserId, "");
+            UserEntity previousCurrentuser = gson.fromJson(previousCurrentUserAsString, UserEntity.class);
+            mainTextView.setText(previousCurrentuser.getName());
+        } else {
+            mainTextView.setText(resources.getString(R.string.main_activity_no_user_text));
+        }
+
+
     }
 
     @Override
-    public void showToastAlertWithText(String alertText) {
-        Toast.makeText(this, alertText, Toast.LENGTH_LONG).show();
+    public boolean isBackPressedfromActivityOrFromFragment() {
+        return fragmentManager.getBackStackEntryCount() == 0;
+    }
+
+    @Override
+    public void performActivityOnBackPressed() {
+        this.finish();
+    }
+
+    @Override
+    public void showToastText(String textToShow) {
+        Toast.makeText(this, textToShow, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void showRegisterNewUserViewFragment() {
+        fragmentManager.beginTransaction()
+                .setCustomAnimations(R.anim.enter_from_right, R.anim.exit_to_right)
+                .show(newUserFragment)
+                .addToBackStack(null)
+                .commit();
+    }
+
+    @Override
+    public void hideNewUserFragment() {
+        fragmentManager.beginTransaction()
+                .setCustomAnimations(R.anim.enter_from_right, R.anim.exit_to_right)
+                .hide(newUserFragment)
+                .commit();
+        fragmentManager.popBackStack();
     }
 }

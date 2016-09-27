@@ -4,6 +4,9 @@ import com.example.customscopes.PerActivity;
 
 import javax.inject.Inject;
 
+import rx.Observable;
+import rx.Scheduler;
+
 /**
  * Created by Ander Túrrez on 24/09/16.
  */
@@ -18,7 +21,8 @@ public class GetUserInteractor implements GetUserUseCase{
     }
 
     @Override
-    public void getUser(int id) {
-        this.userRepository.getUser(id);
+    public Observable<UserEntity> saveUser(UserEntity userEntity) {
+        return this.userRepository.saveUser(userEntity);
     }
+
 }

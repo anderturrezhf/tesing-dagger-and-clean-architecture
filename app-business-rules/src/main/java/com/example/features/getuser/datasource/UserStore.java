@@ -4,15 +4,17 @@ import com.example.features.getuser.UserEntity;
 
 import java.util.List;
 
+import rx.Observable;
+
 /**
  * Created by Ander Túrrez on 25/09/16.
  */
 
 public interface UserStore {
 
-    UserEntity entityUserDetails(int id);
+    Observable<UserEntity> entityUserDetails(String id);
 
     List<UserEntity> listOfAllEntityUsers();
 
-    void saveUserToLocalCache(UserEntity user);
+    Observable<UserEntity> saveUserToLocalCache(UserEntity user);
 }

@@ -9,9 +9,16 @@ public class UserEntity {
     private String name;
     private int age;
     private String city;
-    private int id;
+    private String alias;
 
     public UserEntity() {
+    }
+
+    public UserEntity(String name, int age, String city, String alias) {
+        this.name = name;
+        this.age = age;
+        this.city = city;
+        this.alias = alias;
     }
 
     public String getName() {
@@ -26,7 +33,7 @@ public class UserEntity {
         return city;
     }
 
-    public int getId() {
-        return id;
+    public String getAlias() {
+        return alias;
     }
 }

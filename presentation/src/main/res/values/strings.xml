@@ -1,6 +1,19 @@
 <resources>
+
     <string name="app_name">Test App</string>
-    <string name="main_activity_button_text">Register who you are!</string>
-    <string name="main_activity_textview_text">Current user</string>
-    <string name="main_activity_show_empty_name_error">User name cannot be empty</string>
+    <string name="current_user_preferences_id">CurrentUser</string>
+    <!-- Main Activity-->
+    <string name="main_activity_button_text">Register new user!</string>
+    <string name="main_activity_textview_text">Current user: </string>
+    <string name="main_activity_no_user_text">None</string>
+    <string name="main_activity_new_user_registered">New user correctly registered</string>
+
+    <!-- New User Fragment-->
+    <string name="new_user_fragment_title">Create New User</string>
+    <string name="new_user_fragment_name_text_view">Name: </string>
+    <string name="new_user_fragment_age_text_view">Age: </string>
+    <string name="new_user_fragment_city_text_view">City: </string>
+    <string name="new_user_frafgment_nickname_text_view">Alias: </string>
+    <string name="new_user_fragment_save_button_text">Save user</string>
+    <string name="new_user_fragment_show_empty_field_error">Please, fill all the fields for continue the registration</string>
 </resources>

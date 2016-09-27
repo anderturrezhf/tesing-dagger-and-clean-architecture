@@ -10,6 +10,8 @@ import java.util.List;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 
+import rx.Observable;
+
 /**
  * Created by Ander Túrrez on 25/09/16.
  */
@@ -17,7 +19,7 @@ import javax.inject.Singleton;
 @Singleton
 public class UserDataCache implements UserCache {
 
-    private HashMap<Integer, UserEntity> userHashMap;
+    private HashMap<String, UserEntity> userHashMap;
 
     @Inject
     public UserDataCache() {
@@ -25,13 +27,22 @@ public class UserDataCache implements UserCache {
     }
 
     @Override
-    public void saveUserToLocalCache(UserEntity user) {
-        this.userHashMap.put(user.getId(), user);
+    public Observable<UserEntity> saveUserToLocalCache(UserEntity user) {
+
+        if (this.userHashMap.containsKey(user.getAlias())) {
+
+            return Observable.error(new Throwable("User already Exists"));
+        } else {
+
+            this.userHashMap.put(user.getAlias(), user);
+        }
+
+        return Observable.just(user);
     }
 
     @Override
-    public UserEntity getUserById(int id) {
-        return userHashMap.get(id);
+    public Observable<UserEntity> getUserById(String id) {
+        return Observable.just(userHashMap.get(id));
     }
 
     @Override
@@ -40,7 +51,7 @@ public class UserDataCache implements UserCache {
     }
 
     @Override
-    public boolean existsUserOnLocalCache(int userId) {
+    public boolean existsUserOnLocalCache(String userId) {
         return this.userHashMap.containsKey(userId);
     }
 

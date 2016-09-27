@@ -4,6 +4,7 @@ import android.content.SharedPreferences;
 
 import com.example.features.getuser.UserCache;
 import com.example.features.getuser.UserRepository;
+import com.google.gson.Gson;
 import com.test.ander.testingcleanarchitecturewithdaggerandrxjava.di.modules.data.RepositoryModule;
 import com.test.ander.testingcleanarchitecturewithdaggerandrxjava.di.modules.global.ApplicationModule;
 import com.test.ander.testingcleanarchitecturewithdaggerandrxjava.ui.CustomApplication;
@@ -32,4 +33,6 @@ public interface ApplicationComponent {
     UserRepository getUserRepository();
 
     UserCache getUserCache();
+
+    Gson getGson();
 }

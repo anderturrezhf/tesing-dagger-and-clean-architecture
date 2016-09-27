@@ -1,6 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimary">#3f51b5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+
+    <color name="color_white">#FFFFFF</color>
+    <color name="color_black">#000000</color>
+    <color name="color_grey">#999999</color>
+
+    <!-- Save User Button colors -->
+    <color name="new_user_fragment_button_pressed_start_color">#345953</color>
+    <color name="new_user_fragment_button_pressed_end_color">#689a92</color>
+    <color name="new_user_fragment_button_not_pressed_start_color">#8dbab3</color>
+    <color name="new_user_fragment_button_not_pressed_end_color">#58857e</color>
+    <color name="new_user_fragment_button_stroke_color">#5e7974</color>
+
+
+
 </resources>

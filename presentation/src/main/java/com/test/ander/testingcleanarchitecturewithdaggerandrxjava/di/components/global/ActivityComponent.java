@@ -8,9 +8,12 @@ import com.example.customscopes.PerActivity;
 import com.test.ander.testingcleanarchitecturewithdaggerandrxjava.di.modules.global.ActivityModule;
 import com.test.ander.testingcleanarchitecturewithdaggerandrxjava.di.modules.ui.PresenterModule;
 import com.test.ander.testingcleanarchitecturewithdaggerandrxjava.di.modules.ui.UseCaseModule;
-import com.test.ander.testingcleanarchitecturewithdaggerandrxjava.features.getuser.MVPGetUser;
+import com.test.ander.testingcleanarchitecturewithdaggerandrxjava.features.activities.MVPMainActivity;
+import com.test.ander.testingcleanarchitecturewithdaggerandrxjava.features.getuser.MVPNewUserRegistration;
+import com.test.ander.testingcleanarchitecturewithdaggerandrxjava.features.getuser.NewUserFragment;
 import com.test.ander.testingcleanarchitecturewithdaggerandrxjava.ui.MainActivity;
 import com.test.ander.testingcleanarchitecturewithdaggerandrxjava.ui.basecomponents.BaseActivity;
+import com.test.ander.testingcleanarchitecturewithdaggerandrxjava.ui.basecomponents.BaseFragment;
 
 import dagger.Component;
 
@@ -21,7 +24,11 @@ import dagger.Component;
 @Component(dependencies = {ApplicationComponent.class}, modules = {ActivityModule.class, PresenterModule.class, UseCaseModule.class})
 public interface ActivityComponent {
 
+    void inject(BaseActivity mainActivity);
+    void inject(BaseFragment baseFragment);
+
     void inject(MainActivity mainActivity);
+    void inject(NewUserFragment newUserFragment);
 
     BaseActivity getbaseActivity();
 
@@ -31,5 +38,7 @@ public interface ActivityComponent {
 
     Resources getResources();
 
-    MVPGetUser.Presenter getGetUserPresenter();
+    MVPNewUserRegistration.Presenter getGetUserPresenter();
+
+    MVPMainActivity.Presenter getMainActivityPresenter();
 }

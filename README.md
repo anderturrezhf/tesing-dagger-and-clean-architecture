@@ -3,3 +3,9 @@ project on gradle files and structure for a clean architecture with the dependen
 
 2 Architecture is based on Uncle Bob's Clean Architecture and uses Dagger as dependency injection
 framework. RxJava is not used at the moment but it may come soon (dependencies are added)
+
+3. We have to work always with interfaces, not with the object directly in order to preserve
+the architecture correct. That's why on Dagger the return type is always the interface
+
+4. Annotations go above only if they are used on a method. For variables or fields, they go
+immediately before they are declared
