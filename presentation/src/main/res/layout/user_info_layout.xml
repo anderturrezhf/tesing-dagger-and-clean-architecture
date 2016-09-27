@@ -1,5 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent">
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:background="@drawable/new_user_fragment_bg"
+    android:padding="@dimen/new_user_fragment_layout_padding">
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/userInfoFragmentTitleTextView"
+        android:textSize="@dimen/new_user_fragment_title_size"
+        android:layout_marginBottom="@dimen/user_info_fragment_margin_between_info_text_views"
+        android:textColor="@color/color_black" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/userInfoFragmentTitleTextView"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/userInfoFragmentAgeTextView"
+        android:layout_marginBottom="@dimen/user_info_fragment_margin_between_info_text_views"
+        android:textColor="@color/color_black" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/userInfoFragmentCityTextView"
+        android:textColor="@color/color_black"
+        android:layout_marginBottom="@dimen/user_info_fragment_margin_between_info_text_views"
+        android:layout_below="@+id/userInfoFragmentAgeTextView" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/userInfoFragmentCityTextView"
+        android:id="@+id/userInfoFragmentAliasTextView"
+        android:textColor="@color/color_black"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:text="@string/user_info_fragment_bottom_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/userInfoFragmentBottomTextView"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:textSize="@dimen/new_user_fragment_title_size"
+        android:textColor="@color/color_black" />
 </RelativeLayout>
