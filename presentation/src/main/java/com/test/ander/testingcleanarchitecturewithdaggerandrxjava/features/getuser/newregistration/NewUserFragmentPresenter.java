@@ -41,7 +41,7 @@ public class NewUserFragmentPresenter implements MVPNewUserRegistration.Presente
             this.view.showToastAlertWithText(resources.getString(R.string.new_user_fragment_show_empty_field_error));
         } else {
             this.interactor.saveUser(createNewUserEntityForSave())
-                    .subscribe(userEntity -> this.userCorrectlySaved(userEntity),
+                    .subscribe(this::userCorrectlySaved,
                             throwable -> this.view.showToastAlertWithText(throwable.getMessage()));
 
         }
