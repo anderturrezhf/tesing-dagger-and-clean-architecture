@@ -3,7 +3,6 @@ package com.test.ander.testingcleanarchitecturewithdaggerandrxjava.ui;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -28,8 +27,9 @@ public class MainActivity extends BaseActivity implements MVPMainActivity.View {
 
     @Inject protected MVPMainActivity.Presenter presenter;
 
-    @BindView(R.id.mainActivityRegisterNewUserButton) protected Button mainButton;
-    @BindView(R.id.mainActivityCurrentUserTextView) protected TextView mainTextView;
+    @BindView(R.id.mainActivityRegisterNewUserButton) protected Button registerNewUserButton;
+    @BindView(R.id.mainActivityCurrentUserTextView) protected TextView currentUserNameTextView;
+    @BindView(R.id.mainActivityCurrentUserInfoButton) protected Button currentUserInfoButton;
 
     private NewUserFragment newUserFragment;
     private UserInfoFragment userInfoFragment;
@@ -65,11 +65,11 @@ public class MainActivity extends BaseActivity implements MVPMainActivity.View {
     @Override
     public void onBackPressed() {
 
-      presenter.backButtonPressed();
+        presenter.backButtonPressed();
     }
 
     @Subscribe
-    public void onEvent(NewUserSavedEvent event){
+    public void onEvent(NewUserSavedEvent event) {
         presenter.newUserSaved(event.getUser());
     }
 
@@ -99,22 +99,27 @@ public class MainActivity extends BaseActivity implements MVPMainActivity.View {
 
     //Layout Listeners Elements Methods
     @OnClick(R.id.mainActivityRegisterNewUserButton)
-    void performClick() {
-        presenter.showCreateNewUserFragment();
+    protected void performRegisterNewUserClick() {
+        presenter.createNewUserButtonClicked();
+    }
+
+    @OnClick(R.id.mainActivityCurrentUserInfoButton)
+    protected void performShowCurrentUserInfoClick(){
+        presenter.showCurrentUserInfoButtonClicked();
     }
 
 
     //View Methods
     @Override
     public void setNewCurrentUser(UserEntity user) {
-        this.mainTextView.setText(user.getName());
+        this.currentUserNameTextView.setText(user.getName());
     }
 
     @Override
     public void saveCurrentUserOnPreferences(UserEntity currentuser) {
         SharedPreferences.Editor editor = sharedPreferences.edit();
 
-        if(currentuser == null){
+        if (currentuser == null) {
             editor.putString(resources.getString(R.string.current_user_preferences_id), resources.getString(R.string.main_activity_no_user_text));
         } else {
             editor.putString(resources.getString(R.string.current_user_preferences_id), currentuser.getAlias());
@@ -128,23 +133,28 @@ public class MainActivity extends BaseActivity implements MVPMainActivity.View {
     public void getPreviousUserFromPreferencesIfAnyAndPutOnTheLabel() {
         String previousUserId = sharedPreferences.getString(resources.getString(R.string.current_user_preferences_id), resources.getString(R.string.main_activity_no_user_text));
 
-        if(!previousUserId.equals(resources.getString(R.string.main_activity_no_user_text))){
+        if (!previousUserId.equals(resources.getString(R.string.main_activity_no_user_text))) {
             String previousCurrentUserAsString = sharedPreferences.getString(previousUserId, "");
             UserEntity previousCurrentuser = gson.fromJson(previousCurrentUserAsString, UserEntity.class);
-            mainTextView.setText(previousCurrentuser.getName());
+            currentUserNameTextView.setText(previousCurrentuser.getName());
         } else {
-            mainTextView.setText(resources.getString(R.string.main_activity_no_user_text));
+            currentUserNameTextView.setText(resources.getString(R.string.main_activity_no_user_text));
         }
     }
 
     @Override
-    public boolean isBackPressedfromActivityOrFromFragment() {
+    public boolean isBackPressedfromActivity() {
         return fragmentManager.getBackStackEntryCount() == 0;
     }
 
     @Override
     public void performActivityOnBackPressed() {
         this.finish();
+    }
+
+    @Override
+    public String getBackStackTopFragmentTag() {
+        return fragmentManager.getBackStackEntryAt(fragmentManager.getBackStackEntryCount() - 1).getName();
     }
 
     @Override
@@ -157,7 +167,7 @@ public class MainActivity extends BaseActivity implements MVPMainActivity.View {
         fragmentManager.beginTransaction()
                 .setCustomAnimations(R.anim.enter_from_right, R.anim.exit_to_right)
                 .show(newUserFragment)
-                .addToBackStack(null)
+                .addToBackStack(NewUserFragment.class.getName())
                 .commit();
     }
 
@@ -175,14 +185,14 @@ public class MainActivity extends BaseActivity implements MVPMainActivity.View {
         fragmentManager.beginTransaction()
                 .setCustomAnimations(R.anim.enter_from_left, R.anim.exit_to_left)
                 .show(userInfoFragment)
-                .addToBackStack(null)
+                .addToBackStack(UserInfoFragment.class.getName())
                 .commit();
     }
 
     @Override
     public void hideCurrentUserInfofragment() {
         fragmentManager.beginTransaction()
-                .setCustomAnimations(R.anim.enter_from_right, R.anim.exit_to_right)
+                .setCustomAnimations(R.anim.enter_from_left, R.anim.exit_to_left)
                 .hide(userInfoFragment)
                 .commit();
         fragmentManager.popBackStack();
