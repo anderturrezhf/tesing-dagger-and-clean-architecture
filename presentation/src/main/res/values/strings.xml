@@ -3,7 +3,9 @@
     <string name="app_name">Test App</string>
     <string name="current_user_preferences_id">CurrentUser</string>
     <!-- Main Activity-->
-    <string name="main_activity_button_text">Register new user!</string>
+    <string name="main_activity_new_user_button_text">Register new user!</string>
+    <string name="main_activity_current_user_info_button_text">Show current user info</string>
+    <string name="main_activity_buttons_separator_label_text">- or -</string>
     <string name="main_activity_textview_text">Current user: </string>
     <string name="main_activity_no_user_text">None</string>
     <string name="main_activity_new_user_registered">New user correctly registered</string>
