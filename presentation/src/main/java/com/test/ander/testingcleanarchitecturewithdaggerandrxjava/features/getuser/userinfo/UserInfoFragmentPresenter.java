@@ -1,7 +1,6 @@
 package com.test.ander.testingcleanarchitecturewithdaggerandrxjava.features.getuser.userinfo;
 
 import com.example.customscopes.PerActivity;
-import com.example.features.getuser.UserEntity;
 import com.example.features.getuser.userinfo.UserInfoUseCase;
 
 import javax.inject.Inject;
@@ -27,16 +26,11 @@ public class UserInfoFragmentPresenter implements MVPCurrentUserInfo.Presenter {
 
     @Override
     public void updateUserInfo() {
-        this.interactor.getCurrentUserInfo()
-                .subscribe(this::updateCurrentUserInfo);
-    }
-
-    private void updateCurrentUserInfo(UserEntity currentUser){
-
-        if(currentUser != null){
-            this.view.setCurrentUserInfoOnFields(currentUser);
-        } else {
-            this.view.setEmptyUserInfo();
-        }
+        this.interactor.getCurrentUser()
+                .subscribe(userEntity -> this.view.setCurrentUserInfoOnFields(userEntity),
+                        throwable -> {
+                            this.view.showToastMessage(throwable.getMessage());
+                            this.view.setEmptyUserInfo();
+                        });
     }
 }

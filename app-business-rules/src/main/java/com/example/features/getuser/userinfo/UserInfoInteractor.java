@@ -22,7 +22,7 @@ public class UserInfoInteractor implements UserInfoUseCase {
     }
 
     @Override
-    public Observable<UserEntity> getCurrentUserInfo() {
+    public Observable<UserEntity> getCurrentUser() {
         return userRepository.getCurrentUser();
     }
 }

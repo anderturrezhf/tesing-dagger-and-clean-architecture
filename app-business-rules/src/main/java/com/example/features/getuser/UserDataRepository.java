@@ -43,11 +43,14 @@ public class UserDataRepository implements UserRepository {
 
     @Override
     public Observable<UserEntity> getCurrentUser() {
-        return Observable.just(currentUser);
+
+        return currentUser == null ? Observable.error(new Throwable("No Current User")) : Observable.just(currentUser);
     }
 
     @Override
-    public void setCurrentUser(UserEntity userEntity) {
+    public Observable<UserEntity> setCurrentUser(UserEntity userEntity) {
         this.currentUser = userEntity;
+
+        return getCurrentUser();
     }
 }

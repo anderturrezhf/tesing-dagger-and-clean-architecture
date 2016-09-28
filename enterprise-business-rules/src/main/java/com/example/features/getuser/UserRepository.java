@@ -18,5 +18,5 @@ public interface UserRepository {
 
     Observable<UserEntity> getCurrentUser();
 
-    void setCurrentUser(UserEntity userEntity);
+    Observable<UserEntity> setCurrentUser(UserEntity userEntity);
 }

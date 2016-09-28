@@ -1,5 +1,7 @@
 package com.test.ander.testingcleanarchitecturewithdaggerandrxjava.di.modules.ui;
 
+import com.example.features.activity.MainActivityInteractor;
+import com.example.features.activity.MainActivityUseCase;
 import com.example.features.getuser.newregistration.RegisterNewUserInteractor;
 import com.example.features.getuser.newregistration.RegisterNewUserUseCase;
 import com.example.customscopes.PerActivity;
@@ -28,6 +30,12 @@ public class UseCaseModule {
     @PerActivity
     @Provides
     UserInfoUseCase providesUserInfoUseCase(UserInfoInteractor interactor){
+        return interactor;
+    }
+
+    @PerActivity
+    @Provides
+    MainActivityUseCase providesMainActivityUsecase(MainActivityInteractor interactor){
         return interactor;
     }
 }

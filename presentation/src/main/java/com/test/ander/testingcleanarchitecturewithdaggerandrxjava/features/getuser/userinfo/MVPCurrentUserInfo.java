@@ -12,6 +12,8 @@ public interface MVPCurrentUserInfo {
         void setCurrentUserInfoOnFields(UserEntity user);
 
         void setEmptyUserInfo();
+
+        void showToastMessage(String message);
     }
 
     interface Presenter {

@@ -19,17 +19,19 @@ public interface MVPMainActivity {
 
         void hideCurrentUserInfofragment();
 
-        void setNewCurrentUser(UserEntity user);
+        void setNewCurrentUserNameOnTitle(UserEntity user);
 
         void saveCurrentUserOnPreferences(UserEntity currentuser);
 
-        void getPreviousUserFromPreferencesIfAnyAndPutOnTheLabel();
+        UserEntity getPreviousUserFromPreferencesIfAny();
 
         boolean isBackPressedfromActivity();
 
         void performActivityOnBackPressed();
 
         String getBackStackTopFragmentTag();
+
+        void updateCurrentUserFragmentInfo();
     }
 
     interface Presenter {
@@ -46,7 +48,5 @@ public interface MVPMainActivity {
         void activityOnDestroy();
 
         void backButtonPressed();
-
-
     }
 }

@@ -5,4 +5,7 @@ package com.test.ander.testingcleanarchitecturewithdaggerandrxjava.features.getu
  */
 
 public class UpdateCurrentUserInfoEvent {
+
+    public UpdateCurrentUserInfoEvent() {
+    }
 }

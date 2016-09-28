@@ -10,5 +10,5 @@ import rx.Observable;
 
 public interface UserInfoUseCase {
 
-    Observable<UserEntity> getCurrentUserInfo();
+    Observable<UserEntity> getCurrentUser();
 }

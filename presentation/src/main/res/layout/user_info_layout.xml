@@ -12,7 +12,9 @@
         android:id="@+id/userInfoFragmentTitleTextView"
         android:textSize="@dimen/new_user_fragment_title_size"
         android:layout_marginBottom="@dimen/user_info_fragment_margin_between_info_text_views"
-        android:textColor="@color/color_black" />
+        android:textColor="@color/color_black"
+        android:textStyle="normal|bold"
+        android:text="TITLE" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -21,7 +23,8 @@
         android:layout_centerHorizontal="true"
         android:id="@+id/userInfoFragmentAgeTextView"
         android:layout_marginBottom="@dimen/user_info_fragment_margin_between_info_text_views"
-        android:textColor="@color/color_black" />
+        android:textColor="@color/color_black"
+        android:text="Age" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -30,7 +33,8 @@
         android:id="@+id/userInfoFragmentCityTextView"
         android:textColor="@color/color_black"
         android:layout_marginBottom="@dimen/user_info_fragment_margin_between_info_text_views"
-        android:layout_below="@+id/userInfoFragmentAgeTextView" />
+        android:layout_below="@+id/userInfoFragmentAgeTextView"
+        android:text="City" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -38,7 +42,8 @@
         android:layout_below="@+id/userInfoFragmentCityTextView"
         android:id="@+id/userInfoFragmentAliasTextView"
         android:textColor="@color/color_black"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:text="Alias" />
 
     <TextView
         android:text="@string/user_info_fragment_bottom_text"

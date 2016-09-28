@@ -12,6 +12,7 @@ import com.test.ander.testingcleanarchitecturewithdaggerandrxjava.R;
 import com.test.ander.testingcleanarchitecturewithdaggerandrxjava.features.activities.MVPMainActivity;
 import com.test.ander.testingcleanarchitecturewithdaggerandrxjava.features.getuser.newregistration.NewUserFragment;
 import com.test.ander.testingcleanarchitecturewithdaggerandrxjava.features.getuser.newregistration.NewUserSavedEvent;
+import com.test.ander.testingcleanarchitecturewithdaggerandrxjava.features.getuser.userinfo.UpdateCurrentUserInfoEvent;
 import com.test.ander.testingcleanarchitecturewithdaggerandrxjava.features.getuser.userinfo.UserInfoFragment;
 import com.test.ander.testingcleanarchitecturewithdaggerandrxjava.ui.basecomponents.BaseActivity;
 
@@ -68,6 +69,7 @@ public class MainActivity extends BaseActivity implements MVPMainActivity.View {
         presenter.backButtonPressed();
     }
 
+    //EventBus method
     @Subscribe
     public void onEvent(NewUserSavedEvent event) {
         presenter.newUserSaved(event.getUser());
@@ -111,7 +113,7 @@ public class MainActivity extends BaseActivity implements MVPMainActivity.View {
 
     //View Methods
     @Override
-    public void setNewCurrentUser(UserEntity user) {
+    public void setNewCurrentUserNameOnTitle(UserEntity user) {
         this.currentUserNameTextView.setText(user.getName());
     }
 
@@ -130,15 +132,14 @@ public class MainActivity extends BaseActivity implements MVPMainActivity.View {
     }
 
     @Override
-    public void getPreviousUserFromPreferencesIfAnyAndPutOnTheLabel() {
+    public UserEntity getPreviousUserFromPreferencesIfAny() {
         String previousUserId = sharedPreferences.getString(resources.getString(R.string.current_user_preferences_id), resources.getString(R.string.main_activity_no_user_text));
 
         if (!previousUserId.equals(resources.getString(R.string.main_activity_no_user_text))) {
             String previousCurrentUserAsString = sharedPreferences.getString(previousUserId, "");
-            UserEntity previousCurrentuser = gson.fromJson(previousCurrentUserAsString, UserEntity.class);
-            currentUserNameTextView.setText(previousCurrentuser.getName());
+            return gson.fromJson(previousCurrentUserAsString, UserEntity.class);
         } else {
-            currentUserNameTextView.setText(resources.getString(R.string.main_activity_no_user_text));
+            return null;
         }
     }
 
@@ -155,6 +156,11 @@ public class MainActivity extends BaseActivity implements MVPMainActivity.View {
     @Override
     public String getBackStackTopFragmentTag() {
         return fragmentManager.getBackStackEntryAt(fragmentManager.getBackStackEntryCount() - 1).getName();
+    }
+
+    @Override
+    public void updateCurrentUserFragmentInfo() {
+        eventBus.post(new UpdateCurrentUserInfoEvent());
     }
 
     @Override
