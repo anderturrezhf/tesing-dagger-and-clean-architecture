@@ -65,7 +65,6 @@ public class MainActivity extends BaseActivity implements MVPMainActivity.View {
 
     @Override
     public void onBackPressed() {
-
         presenter.backButtonPressed();
     }
 
@@ -132,7 +131,7 @@ public class MainActivity extends BaseActivity implements MVPMainActivity.View {
     }
 
     @Override
-    public UserEntity getPreviousUserFromPreferencesIfAny() {
+    public UserEntity getPreviousCurrentUserFromPreferencesIfAny() {
         String previousUserId = sharedPreferences.getString(resources.getString(R.string.current_user_preferences_id), resources.getString(R.string.main_activity_no_user_text));
 
         if (!previousUserId.equals(resources.getString(R.string.main_activity_no_user_text))) {
@@ -144,7 +143,7 @@ public class MainActivity extends BaseActivity implements MVPMainActivity.View {
     }
 
     @Override
-    public boolean isBackPressedfromActivity() {
+    public boolean isBackPressedFromActivity() {
         return fragmentManager.getBackStackEntryCount() == 0;
     }
 

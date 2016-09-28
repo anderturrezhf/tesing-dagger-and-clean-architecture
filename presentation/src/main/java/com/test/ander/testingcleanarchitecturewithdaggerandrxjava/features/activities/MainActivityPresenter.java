@@ -43,7 +43,7 @@ public class MainActivityPresenter implements MVPMainActivity.Presenter {
 
     @Override
     public void activityOnCreate() {
-        this.interactor.setPreviousCurrentUserFromPreferences(this.view.getPreviousUserFromPreferencesIfAny())
+        this.interactor.setPreviousCurrentUserFromPreferences(this.view.getPreviousCurrentUserFromPreferencesIfAny())
                 .subscribe(userEntity -> {
                     this.view.setNewCurrentUserNameOnTitle(userEntity);
                     this.view.updateCurrentUserFragmentInfo();
@@ -60,7 +60,7 @@ public class MainActivityPresenter implements MVPMainActivity.Presenter {
 
     @Override
     public void backButtonPressed() {
-        if(this.view.isBackPressedfromActivity()){
+        if(this.view.isBackPressedFromActivity()){
             this.view.performActivityOnBackPressed();
         } else {
             if(this.view.getBackStackTopFragmentTag().equals(NewUserFragment.class.getName())){

@@ -23,9 +23,9 @@ public interface MVPMainActivity {
 
         void saveCurrentUserOnPreferences(UserEntity currentuser);
 
-        UserEntity getPreviousUserFromPreferencesIfAny();
+        UserEntity getPreviousCurrentUserFromPreferencesIfAny();
 
-        boolean isBackPressedfromActivity();
+        boolean isBackPressedFromActivity();
 
         void performActivityOnBackPressed();
 

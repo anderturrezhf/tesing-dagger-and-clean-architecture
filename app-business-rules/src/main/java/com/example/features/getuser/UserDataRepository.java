@@ -17,6 +17,8 @@ import rx.Observable;
 @Singleton
 public class UserDataRepository implements UserRepository {
 
+    private static final String NO_CURRENT_ERROR_MESSAGE = "No Current User";
+
     private UserStoreFactory userStoreFactory;
     private UserEntity currentUser;
 
@@ -44,7 +46,7 @@ public class UserDataRepository implements UserRepository {
     @Override
     public Observable<UserEntity> getCurrentUser() {
 
-        return currentUser == null ? Observable.error(new Throwable("No Current User")) : Observable.just(currentUser);
+        return currentUser == null ? Observable.error(new Throwable(NO_CURRENT_ERROR_MESSAGE)) : Observable.just(currentUser);
     }
 
     @Override
