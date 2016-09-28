@@ -33,7 +33,7 @@ public class UserDataRepository implements UserRepository {
     }
 
     @Override
-    public List<UserEntity> getAllUsers() {
+    public Observable<List<UserEntity>> getAllUsers() {
         return this.userStoreFactory.create().listOfAllEntityUsers();
     }
 
@@ -45,8 +45,7 @@ public class UserDataRepository implements UserRepository {
 
     @Override
     public Observable<UserEntity> getCurrentUser() {
-
-        return currentUser == null ? Observable.error(new Throwable(NO_CURRENT_ERROR_MESSAGE)) : Observable.just(currentUser);
+        return this.currentUser == null ? Observable.error(new Throwable(NO_CURRENT_ERROR_MESSAGE)) : Observable.just(currentUser);
     }
 
     @Override

@@ -19,6 +19,8 @@ import rx.Observable;
 @Singleton
 public class UserDataCache implements UserCache {
 
+    private static final String USER_ALREADY_EXISTS_ERROR_MESSAGE = "User already Exists";
+
     private HashMap<String, UserEntity> userHashMap;
 
     @Inject
@@ -28,12 +30,9 @@ public class UserDataCache implements UserCache {
 
     @Override
     public Observable<UserEntity> saveUserToLocalCache(UserEntity user) {
-
         if (this.userHashMap.containsKey(user.getAlias())) {
-
-            return Observable.error(new Throwable("User already Exists"));
+            return Observable.error(new Throwable(USER_ALREADY_EXISTS_ERROR_MESSAGE));
         } else {
-
             this.userHashMap.put(user.getAlias(), user);
         }
 
@@ -56,8 +55,8 @@ public class UserDataCache implements UserCache {
     }
 
     @Override
-    public List<UserEntity> getAllUsersOnLocalCache() {
-        return new ArrayList<>(this.userHashMap.values());
+    public Observable<List<UserEntity>> getAllUsersOnLocalCache() {
+        return Observable.just(new ArrayList<>(userHashMap.values()));
     }
 
 

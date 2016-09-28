@@ -14,5 +14,5 @@ public interface UserCache {
     Observable<UserEntity> getUserById(String id);
     void deleteLocalCache();
     boolean existsUserOnLocalCache(String userId);
-    List<UserEntity> getAllUsersOnLocalCache();
+    Observable<List<UserEntity>> getAllUsersOnLocalCache();
 }

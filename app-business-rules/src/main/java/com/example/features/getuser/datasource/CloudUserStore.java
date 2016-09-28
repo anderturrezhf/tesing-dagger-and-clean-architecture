@@ -18,7 +18,7 @@ public class CloudUserStore implements UserStore {
     }
 
     @Override
-    public List<UserEntity> listOfAllEntityUsers() {
+    public Observable<List<UserEntity>> listOfAllEntityUsers() {
         return null;
     }
 

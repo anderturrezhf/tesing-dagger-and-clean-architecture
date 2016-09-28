@@ -14,7 +14,7 @@ public interface UserStore {
 
     Observable<UserEntity> entityUserDetails(String id);
 
-    List<UserEntity> listOfAllEntityUsers();
+    Observable<List<UserEntity>> listOfAllEntityUsers();
 
     Observable<UserEntity> saveUserToLocalCache(UserEntity user);
 }

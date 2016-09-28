@@ -25,7 +25,7 @@ public class LocalUserStore implements UserStore {
     }
 
     @Override
-    public List<UserEntity> listOfAllEntityUsers() {
+    public Observable<List<UserEntity>> listOfAllEntityUsers() {
         return this.userCache.getAllUsersOnLocalCache();
     }
 

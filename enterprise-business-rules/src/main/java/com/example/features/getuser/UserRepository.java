@@ -12,7 +12,7 @@ public interface UserRepository {
 
     Observable<UserEntity> getUser(String id);
 
-    List<UserEntity> getAllUsers();
+    Observable<List<UserEntity>> getAllUsers();
 
     Observable<UserEntity> saveUser(UserEntity user);
 
