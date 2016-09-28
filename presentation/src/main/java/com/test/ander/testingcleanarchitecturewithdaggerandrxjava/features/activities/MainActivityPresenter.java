@@ -6,6 +6,8 @@ import com.example.customscopes.PerActivity;
 import com.example.features.getuser.UserEntity;
 import com.example.features.getuser.UserRepository;
 import com.test.ander.testingcleanarchitecturewithdaggerandrxjava.R;
+import com.test.ander.testingcleanarchitecturewithdaggerandrxjava.features.getuser.newregistration.NewUserFragment;
+import com.test.ander.testingcleanarchitecturewithdaggerandrxjava.features.getuser.userinfo.UserInfoFragment;
 
 import javax.inject.Inject;
 
@@ -51,15 +53,24 @@ public class MainActivityPresenter implements MVPMainActivity.Presenter {
     @Override
     public void backButtonPressed() {
 
-        if(this.view.isBackPressedfromActivityOrFromFragment()){
+        if(this.view.isBackPressedfromActivity()){
             this.view.performActivityOnBackPressed();
         } else {
-            this.view.hideNewUserFragment();
+            if(this.view.getBackStackTopFragmentTag().equals(NewUserFragment.class.getName())){
+                this.view.hideNewUserFragment();
+            } else if(this.view.getBackStackTopFragmentTag().equals(UserInfoFragment.class.getName())){
+                this.view.hideCurrentUserInfofragment();
+            }
         }
     }
 
     @Override
-    public void showCreateNewUserFragment() {
+    public void createNewUserButtonClicked() {
         this.view.showRegisterNewUserViewFragment();
+    }
+
+    @Override
+    public void showCurrentUserInfoButtonClicked() {
+        this.view.showCurrentUserInfofragment();
     }
 }

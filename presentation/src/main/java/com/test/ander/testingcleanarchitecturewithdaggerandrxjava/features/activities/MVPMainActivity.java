@@ -25,15 +25,19 @@ public interface MVPMainActivity {
 
         void getPreviousUserFromPreferencesIfAnyAndPutOnTheLabel();
 
-        boolean isBackPressedfromActivityOrFromFragment();
+        boolean isBackPressedfromActivity();
 
         void performActivityOnBackPressed();
+
+        String getBackStackTopFragmentTag();
     }
 
     interface Presenter {
         void setView(MVPMainActivity.View view);
 
-        void showCreateNewUserFragment();
+        void createNewUserButtonClicked();
+
+        void showCurrentUserInfoButtonClicked();
 
         void newUserSaved(UserEntity userEntity);
 
