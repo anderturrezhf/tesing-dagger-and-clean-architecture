@@ -1,7 +1,7 @@
 package com.test.ander.testingcleanarchitecturewithdaggerandrxjava.di.modules.global;
 
-import android.content.Context;
 import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 
 import com.example.features.getuser.UserCache;
@@ -42,7 +42,7 @@ public class ApplicationModule {
     @Provides
     @Named(DEFAULT_PREFERENCES)
     SharedPreferences providesSharedPreferences(CustomApplication customApplication){
-        return customApplication.getSharedPreferences("DefaultPreferences", Context.MODE_PRIVATE);
+        return PreferenceManager.getDefaultSharedPreferences(customApplication);
     }
 
     @Singleton
