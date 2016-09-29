@@ -51,13 +51,13 @@ public class MainActivity extends BaseActivity implements MVPMainActivity.View {
         initDependencies();
         initFragmentsIfNecessary();
         presenter.setView(this);
-        presenter.activityOnCreate();
     }
 
     @Override
     protected void onStart() {
         super.onStart();
         eventBus.register(this);
+        presenter.activityOnStart();
     }
 
     @Override

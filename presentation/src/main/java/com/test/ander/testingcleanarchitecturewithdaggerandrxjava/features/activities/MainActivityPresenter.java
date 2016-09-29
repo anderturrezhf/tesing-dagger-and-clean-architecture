@@ -41,7 +41,7 @@ public class MainActivityPresenter implements MVPMainActivity.Presenter {
     }
 
     @Override
-    public void activityOnCreate() {
+    public void activityOnStart() {
         this.interactor.setPreviousCurrentUserFromPreferences(this.view.getPreviousCurrentUserFromPreferencesIfAny())
                 .subscribe(userEntity -> this.view.updateCurrentUserLayoutInfo(userEntity),
                         throwable -> this.view.setNoUserStateLayout());

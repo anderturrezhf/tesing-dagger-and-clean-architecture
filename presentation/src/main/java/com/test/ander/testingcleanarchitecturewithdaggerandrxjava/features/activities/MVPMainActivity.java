@@ -41,7 +41,7 @@ public interface MVPMainActivity {
 
         void newUserSaved(UserEntity userEntity);
 
-        void activityOnCreate();
+        void activityOnStart();
 
         void activityOnStop();
 
