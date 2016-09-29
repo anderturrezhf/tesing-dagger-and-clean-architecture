@@ -11,9 +11,7 @@ public interface MVPMainActivity {
     interface View {
         void showToastText(String textToShow);
 
-        void showRegisterNewUserViewFragment();
-
-        void hideNewUserFragment();
+        void showOrHideRegisterNewUserFragment(boolean show);
 
         void showOrCollapseBottomSheet(boolean show);
 

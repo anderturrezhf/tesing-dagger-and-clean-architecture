@@ -188,25 +188,23 @@ public class MainActivity extends BaseActivity implements MVPMainActivity.View {
     }
 
     @Override
-    public void showRegisterNewUserViewFragment() {
-        fragmentManager.beginTransaction()
-                .setCustomAnimations(R.anim.enter_from_right, R.anim.exit_to_right)
-                .show(newUserFragment)
-                .addToBackStack(NewUserFragment.class.getName())
-                .commit();
-        bottomSheet.setState(BottomSheetBehavior.STATE_HIDDEN);
+    public void showOrHideRegisterNewUserFragment(boolean show) {
+        if(show){
+            fragmentManager.beginTransaction()
+                    .setCustomAnimations(R.anim.enter_from_right, R.anim.exit_to_right)
+                    .show(newUserFragment)
+                    .addToBackStack(NewUserFragment.class.getName())
+                    .commit();
+            bottomSheet.setState(BottomSheetBehavior.STATE_HIDDEN);
+        } else {
+            fragmentManager.beginTransaction()
+                    .setCustomAnimations(R.anim.enter_from_right, R.anim.exit_to_right)
+                    .hide(newUserFragment)
+                    .commit();
+            fragmentManager.popBackStack();
+            bottomSheet.setState(BottomSheetBehavior.STATE_COLLAPSED);
+        }
     }
-
-    @Override
-    public void hideNewUserFragment() {
-        fragmentManager.beginTransaction()
-                .setCustomAnimations(R.anim.enter_from_right, R.anim.exit_to_right)
-                .hide(newUserFragment)
-                .commit();
-        fragmentManager.popBackStack();
-        bottomSheet.setState(BottomSheetBehavior.STATE_COLLAPSED);
-    }
-
 
     @Override
     public void showOrCollapseBottomSheet(boolean show) {

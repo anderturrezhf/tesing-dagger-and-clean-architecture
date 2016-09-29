@@ -35,7 +35,7 @@ public class MainActivityPresenter implements MVPMainActivity.Presenter {
     @Override
     public void newUserSaved(UserEntity userEntity) {
         this.view.updateCurrentUserLayoutInfo(userEntity);
-        this.view.hideNewUserFragment();
+        this.view.showOrHideRegisterNewUserFragment(false);
         this.view.showToastText(resources.getString(R.string.main_activity_new_user_registered));
     }
 
@@ -64,14 +64,14 @@ public class MainActivityPresenter implements MVPMainActivity.Presenter {
                 this.view.performActivityOnBackPressed();
             }
         } else if (this.view.getBackStackTopFragmentTag().equals(NewUserFragment.class.getName())) {
-            this.view.hideNewUserFragment();
+            this.view.showOrHideRegisterNewUserFragment(false);
         }
 
     }
 
     @Override
     public void createNewUserButtonClicked() {
-        this.view.showRegisterNewUserViewFragment();
+        this.view.showOrHideRegisterNewUserFragment(true);
     }
 
     @Override
