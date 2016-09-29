@@ -9,6 +9,7 @@
     <string name="main_activity_textview_text">Current user: </string>
     <string name="main_activity_no_user_text">None</string>
     <string name="main_activity_new_user_registered">New user correctly registered</string>
+    <string name="custom_bottom_sheet_behaviour">.ui.customcomponents.CustomBottomSheetBehaviour</string>
 
     <!-- New User Fragment-->
     <string name="new_user_fragment_title">Create New User</string>

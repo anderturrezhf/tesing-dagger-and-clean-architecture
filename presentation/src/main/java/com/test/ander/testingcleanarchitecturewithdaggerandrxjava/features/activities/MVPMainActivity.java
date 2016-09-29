@@ -15,11 +15,7 @@ public interface MVPMainActivity {
 
         void hideNewUserFragment();
 
-        void showCurrentUserInfofragment();
-
-        void hideCurrentUserInfofragment();
-
-        void setNewCurrentUserNameOnTitle(UserEntity user);
+        void showOrCollapseBottomSheet(boolean show);
 
         void saveCurrentUserOnPreferences(UserEntity currentuser);
 
@@ -27,11 +23,15 @@ public interface MVPMainActivity {
 
         boolean isBackPressedFromActivity();
 
+        boolean isBottomSheetExpanded();
+
         void performActivityOnBackPressed();
 
         String getBackStackTopFragmentTag();
 
-        void updateCurrentUserFragmentInfo();
+        void updateCurrentUserLayoutInfo(UserEntity user);
+
+        void setNoUserStateLayout();
     }
 
     interface Presenter {

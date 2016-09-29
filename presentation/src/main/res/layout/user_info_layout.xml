@@ -1,8 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:background="@drawable/new_user_fragment_bg"
-    android:padding="@dimen/new_user_fragment_layout_padding">
+    android:padding="@dimen/new_user_fragment_layout_padding"
+    app:layout_behavior="@string/bottom_sheet_behavior"
+    app:behavior_hideable="true"
+    app:behavior_peekHeight="@dimen/main_activity_bottom_sheet_peek_height">
 
     <TextView
         android:layout_width="wrap_content"

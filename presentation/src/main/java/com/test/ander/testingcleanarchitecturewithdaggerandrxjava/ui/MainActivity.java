@@ -2,8 +2,10 @@ package com.test.ander.testingcleanarchitecturewithdaggerandrxjava.ui;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.support.design.widget.BottomSheetBehavior;
 import android.support.v4.app.Fragment;
 import android.widget.Button;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -12,8 +14,6 @@ import com.test.ander.testingcleanarchitecturewithdaggerandrxjava.R;
 import com.test.ander.testingcleanarchitecturewithdaggerandrxjava.features.activities.MVPMainActivity;
 import com.test.ander.testingcleanarchitecturewithdaggerandrxjava.features.getuser.newregistration.NewUserFragment;
 import com.test.ander.testingcleanarchitecturewithdaggerandrxjava.features.getuser.newregistration.NewUserSavedEvent;
-import com.test.ander.testingcleanarchitecturewithdaggerandrxjava.features.getuser.userinfo.UpdateCurrentUserInfoEvent;
-import com.test.ander.testingcleanarchitecturewithdaggerandrxjava.features.getuser.userinfo.UserInfoFragment;
 import com.test.ander.testingcleanarchitecturewithdaggerandrxjava.ui.basecomponents.BaseActivity;
 
 import org.greenrobot.eventbus.Subscribe;
@@ -28,17 +28,26 @@ public class MainActivity extends BaseActivity implements MVPMainActivity.View {
 
     @Inject protected MVPMainActivity.Presenter presenter;
 
+    //Main Activity laypout Views
     @BindView(R.id.mainActivityRegisterNewUserButton) protected Button registerNewUserButton;
-    @BindView(R.id.mainActivityCurrentUserTextView) protected TextView currentUserNameTextView;
     @BindView(R.id.mainActivityCurrentUserInfoButton) protected Button currentUserInfoButton;
+    @BindView(R.id.mainActivityBottomSheet) protected RelativeLayout bottomSheetlayout;
+    //Bottom Sheet Views
+    @BindView(R.id.userInfoFragmentTitleTextView) protected TextView titletextView;
+    @BindView(R.id.userInfoFragmentAgeTextView) protected TextView ageTextView;
+    @BindView(R.id.userInfoFragmentCityTextView) protected TextView cityTextView;
+    @BindView(R.id.userInfoFragmentAliasTextView) protected TextView aliasTextView;
+    @BindView(R.id.userInfoFragmentBottomTextView) protected TextView bottomTextView;
+
+    private BottomSheetBehavior bottomSheet;
 
     private NewUserFragment newUserFragment;
-    private UserInfoFragment userInfoFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         ButterKnife.bind(this);
+        bottomSheet = BottomSheetBehavior.from(bottomSheetlayout);
         initDependencies();
         initFragmentsIfNecessary();
         presenter.setView(this);
@@ -83,13 +92,10 @@ public class MainActivity extends BaseActivity implements MVPMainActivity.View {
     @Override
     protected void initFragmentsIfNecessary() {
         newUserFragment = (NewUserFragment) Fragment.instantiate(this, NewUserFragment.class.getName());
-        userInfoFragment = (UserInfoFragment) Fragment.instantiate(this, UserInfoFragment.class.getName());
 
         fragmentManager.beginTransaction()
                 .add(R.id.fragment_container, newUserFragment, NewUserFragment.class.getName())
                 .hide(newUserFragment)
-                .add(R.id.fragment_container, userInfoFragment, UserInfoFragment.class.getName())
-                .hide(userInfoFragment)
                 .commit();
     }
 
@@ -111,10 +117,6 @@ public class MainActivity extends BaseActivity implements MVPMainActivity.View {
 
 
     //View Methods
-    @Override
-    public void setNewCurrentUserNameOnTitle(UserEntity user) {
-        this.currentUserNameTextView.setText(user.getName());
-    }
 
     @Override
     public void saveCurrentUserOnPreferences(UserEntity currentuser) {
@@ -148,6 +150,11 @@ public class MainActivity extends BaseActivity implements MVPMainActivity.View {
     }
 
     @Override
+    public boolean isBottomSheetExpanded() {
+        return bottomSheet.getState() == BottomSheetBehavior.STATE_EXPANDED;
+    }
+
+    @Override
     public void performActivityOnBackPressed() {
         this.finish();
     }
@@ -158,8 +165,21 @@ public class MainActivity extends BaseActivity implements MVPMainActivity.View {
     }
 
     @Override
-    public void updateCurrentUserFragmentInfo() {
-        eventBus.post(new UpdateCurrentUserInfoEvent());
+    public void updateCurrentUserLayoutInfo(UserEntity user) {
+        this.titletextView.setText(resources.getString(R.string.user_info_fragment_title, user.getName()));
+        this.ageTextView.setText(resources.getString(R.string.user_info_fragment_age, user.getAge() + ""));
+        this.cityTextView.setText(resources.getString(R.string.user_info_fragment_city, user.getCity()));
+        this.aliasTextView.setText(resources.getString(R.string.user_info_fragment_alias, user.getAlias()));
+        this.bottomTextView.setText(resources.getString(R.string.user_info_fragment_bottom_text));
+    }
+
+    @Override
+    public void setNoUserStateLayout() {
+        this.titletextView.setText(resources.getString(R.string.user_info_fragment_no_current_user));
+        this.ageTextView.setText("");
+        this.cityTextView.setText("");
+        this.aliasTextView.setText("");
+        this.bottomTextView.setText("");
     }
 
     @Override
@@ -174,6 +194,7 @@ public class MainActivity extends BaseActivity implements MVPMainActivity.View {
                 .show(newUserFragment)
                 .addToBackStack(NewUserFragment.class.getName())
                 .commit();
+        bottomSheet.setState(BottomSheetBehavior.STATE_HIDDEN);
     }
 
     @Override
@@ -183,23 +204,16 @@ public class MainActivity extends BaseActivity implements MVPMainActivity.View {
                 .hide(newUserFragment)
                 .commit();
         fragmentManager.popBackStack();
+        bottomSheet.setState(BottomSheetBehavior.STATE_COLLAPSED);
     }
 
-    @Override
-    public void showCurrentUserInfofragment() {
-        fragmentManager.beginTransaction()
-                .setCustomAnimations(R.anim.enter_from_left, R.anim.exit_to_left)
-                .show(userInfoFragment)
-                .addToBackStack(UserInfoFragment.class.getName())
-                .commit();
-    }
 
     @Override
-    public void hideCurrentUserInfofragment() {
-        fragmentManager.beginTransaction()
-                .setCustomAnimations(R.anim.enter_from_left, R.anim.exit_to_left)
-                .hide(userInfoFragment)
-                .commit();
-        fragmentManager.popBackStack();
+    public void showOrCollapseBottomSheet(boolean show) {
+        if(show){
+            bottomSheet.setState(BottomSheetBehavior.STATE_EXPANDED);
+        } else {
+            bottomSheet.setState(BottomSheetBehavior.STATE_COLLAPSED);
+        }
     }
 }

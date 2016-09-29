@@ -5,8 +5,6 @@ import com.test.ander.testingcleanarchitecturewithdaggerandrxjava.features.activ
 import com.test.ander.testingcleanarchitecturewithdaggerandrxjava.features.activities.MainActivityPresenter;
 import com.test.ander.testingcleanarchitecturewithdaggerandrxjava.features.getuser.newregistration.NewUserFragmentPresenter;
 import com.test.ander.testingcleanarchitecturewithdaggerandrxjava.features.getuser.newregistration.MVPNewUserRegistration;
-import com.test.ander.testingcleanarchitecturewithdaggerandrxjava.features.getuser.userinfo.MVPCurrentUserInfo;
-import com.test.ander.testingcleanarchitecturewithdaggerandrxjava.features.getuser.userinfo.UserInfoFragmentPresenter;
 
 import dagger.Module;
 import dagger.Provides;
@@ -30,11 +28,5 @@ public class PresenterModule {
     @Provides
     MVPMainActivity.Presenter providesMVPMainActivityPresenter(MainActivityPresenter mainActivityPresenter){
         return mainActivityPresenter;
-    }
-
-    @PerActivity
-    @Provides
-    MVPCurrentUserInfo.Presenter providesMVPCurrentUserInfoPresenter(UserInfoFragmentPresenter presenter){
-        return presenter;
     }
 }

@@ -8,7 +8,6 @@ import com.example.features.activity.MainActivityUseCase;
 import com.example.features.getuser.UserEntity;
 import com.test.ander.testingcleanarchitecturewithdaggerandrxjava.R;
 import com.test.ander.testingcleanarchitecturewithdaggerandrxjava.features.getuser.newregistration.NewUserFragment;
-import com.test.ander.testingcleanarchitecturewithdaggerandrxjava.features.getuser.userinfo.UserInfoFragment;
 
 import javax.inject.Inject;
 
@@ -35,8 +34,7 @@ public class MainActivityPresenter implements MVPMainActivity.Presenter {
 
     @Override
     public void newUserSaved(UserEntity userEntity) {
-        this.view.updateCurrentUserFragmentInfo();
-        this.view.setNewCurrentUserNameOnTitle(userEntity);
+        this.view.updateCurrentUserLayoutInfo(userEntity);
         this.view.hideNewUserFragment();
         this.view.showToastText(resources.getString(R.string.main_activity_new_user_registered));
     }
@@ -45,10 +43,9 @@ public class MainActivityPresenter implements MVPMainActivity.Presenter {
     public void activityOnCreate() {
         this.interactor.setPreviousCurrentUserFromPreferences(this.view.getPreviousCurrentUserFromPreferencesIfAny())
                 .subscribe(userEntity -> {
-                    this.view.setNewCurrentUserNameOnTitle(userEntity);
-                    this.view.updateCurrentUserFragmentInfo();
-                },
-                        throwable -> this.view.updateCurrentUserFragmentInfo());
+                            this.view.updateCurrentUserLayoutInfo(userEntity);
+                        },
+                        throwable -> this.view.setNoUserStateLayout());
     }
 
     @Override
@@ -60,15 +57,16 @@ public class MainActivityPresenter implements MVPMainActivity.Presenter {
 
     @Override
     public void backButtonPressed() {
-        if(this.view.isBackPressedFromActivity()){
-            this.view.performActivityOnBackPressed();
-        } else {
-            if(this.view.getBackStackTopFragmentTag().equals(NewUserFragment.class.getName())){
-                this.view.hideNewUserFragment();
-            } else if(this.view.getBackStackTopFragmentTag().equals(UserInfoFragment.class.getName())){
-                this.view.hideCurrentUserInfofragment();
+        if (this.view.isBackPressedFromActivity()) {
+            if (this.view.isBottomSheetExpanded()) {
+                this.view.showOrCollapseBottomSheet(false);
+            } else {
+                this.view.performActivityOnBackPressed();
             }
+        } else if (this.view.getBackStackTopFragmentTag().equals(NewUserFragment.class.getName())) {
+            this.view.hideNewUserFragment();
         }
+
     }
 
     @Override
@@ -78,6 +76,6 @@ public class MainActivityPresenter implements MVPMainActivity.Presenter {
 
     @Override
     public void showCurrentUserInfoButtonClicked() {
-        this.view.showCurrentUserInfofragment();
+        this.view.showOrCollapseBottomSheet(true);
     }
 }
