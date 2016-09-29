@@ -1,82 +1,87 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.test.ander.testingcleanarchitecturewithdaggerandrxjava.ui.MainActivity"
-    android:background="@color/color_grey">
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:paddingBottom="@dimen/activity_vertical_margin"
-        android:paddingLeft="@dimen/activity_horizontal_margin"
-        android:paddingRight="@dimen/activity_horizontal_margin"
-        android:paddingTop="@dimen/activity_vertical_margin">
-
-        <TextView
-            android:text="@string/main_activity_textview_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/mainActivityCurrentUserLabel"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginBottom="@dimen/current_user_textviews_bottom_margin"
-            android:textSize="@dimen/new_user_fragment_title_size" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/mainActivityCurrentUserTextView"
-            android:layout_alignParentTop="false"
-            android:layout_centerHorizontal="true"
-            android:text="@string/main_activity_no_user_text"
-            android:layout_below="@+id/mainActivityCurrentUserLabel"/>
-
-        <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_centerHorizontal="true">
-
-            <Button
-                android:text="@string/main_activity_current_user_info_button_text"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/mainActivityCurrentUserInfoButton"
-                android:background="@drawable/rounded_corners_button"
-                android:padding="@dimen/button_with_background_padding" />
-
-            <TextView
-                android:text="@string/main_activity_buttons_separator_label_text"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/textView"
-                android:gravity="center"
-                android:layout_marginTop="@dimen/new_user_fragment_margin_bewteen_edit_text_and_text_view"
-                android:layout_marginBottom="@dimen/new_user_fragment_margin_bewteen_edit_text_and_text_view"
-                android:textColor="@color/color_black" />
-
-            <Button
-                android:text="@string/main_activity_new_user_button_text"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_centerHorizontal="true"
-                android:id="@+id/mainActivityRegisterNewUserButton"
-                android:background="@drawable/rounded_corners_button"
-                android:padding="@dimen/button_with_background_padding"
-                android:gravity="center_vertical|center_horizontal|center" />
-        </LinearLayout>
-
-
-    </RelativeLayout>
+    tools:context=".ui.MainActivity">
 
     <FrameLayout
+        android:id="@+id/activity_main"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/fragment_container" />
+        android:background="@color/color_grey">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingBottom="@dimen/activity_vertical_margin"
+            android:paddingLeft="@dimen/activity_horizontal_margin"
+            android:paddingRight="@dimen/activity_horizontal_margin"
+            android:paddingTop="@dimen/activity_vertical_margin">
 
-</FrameLayout>
+            <TextView
+                android:id="@+id/mainActivityCurrentUserLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="@dimen/current_user_textviews_bottom_margin"
+                android:text="@string/main_activity_textview_text"
+                android:textSize="@dimen/new_user_fragment_title_size" />
+
+            <TextView
+                android:id="@+id/mainActivityCurrentUserTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="false"
+                android:layout_below="@+id/mainActivityCurrentUserLabel"
+                android:layout_centerHorizontal="true"
+                android:text="@string/main_activity_no_user_text" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:orientation="vertical">
+
+                <Button
+                    android:id="@+id/mainActivityCurrentUserInfoButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/rounded_corners_button"
+                    android:padding="@dimen/button_with_background_padding"
+                    android:text="@string/main_activity_current_user_info_button_text" />
+
+                <TextView
+                    android:id="@+id/textView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/new_user_fragment_margin_bewteen_edit_text_and_text_view"
+                    android:layout_marginTop="@dimen/new_user_fragment_margin_bewteen_edit_text_and_text_view"
+                    android:gravity="center"
+                    android:text="@string/main_activity_buttons_separator_label_text"
+                    android:textColor="@color/color_black" />
+
+                <Button
+                    android:id="@+id/mainActivityRegisterNewUserButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:background="@drawable/rounded_corners_button"
+                    android:gravity="center_vertical|center_horizontal|center"
+                    android:padding="@dimen/button_with_background_padding"
+                    android:text="@string/main_activity_new_user_button_text" />
+            </LinearLayout>
+
+
+        </RelativeLayout>
+
+        <FrameLayout
+            android:id="@+id/fragment_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </FrameLayout>
+</android.support.design.widget.CoordinatorLayout>
