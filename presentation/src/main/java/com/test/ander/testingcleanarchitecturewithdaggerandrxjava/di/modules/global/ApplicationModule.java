@@ -1,5 +1,6 @@
 package com.test.ander.testingcleanarchitecturewithdaggerandrxjava.di.modules.global;
 
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
@@ -34,14 +35,14 @@ public class ApplicationModule {
     @Singleton
     @Provides
     @NonNull
-    CustomApplication providesCustomApplication(){
+    Context providesCustomApplication(){
         return this.customApplication;
     }
 
     @Singleton
     @Provides
     @Named(DEFAULT_PREFERENCES)
-    SharedPreferences providesSharedPreferences(CustomApplication customApplication){
+    SharedPreferences providesSharedPreferences(Context customApplication){
         return PreferenceManager.getDefaultSharedPreferences(customApplication);
     }
 

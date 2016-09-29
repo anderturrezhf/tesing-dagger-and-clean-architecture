@@ -31,12 +31,6 @@ public class ActivityModule {
 
     @PerActivity
     @Provides
-    Context providesContext(){
-        return this.baseActivity;
-    }
-
-    @PerActivity
-    @Provides
     FragmentManager providesFragmentManager(BaseActivity activity){
         return activity.getSupportFragmentManager();
     }

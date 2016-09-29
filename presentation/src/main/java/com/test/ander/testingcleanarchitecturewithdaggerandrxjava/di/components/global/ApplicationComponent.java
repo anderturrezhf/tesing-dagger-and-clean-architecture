@@ -1,5 +1,6 @@
 package com.test.ander.testingcleanarchitecturewithdaggerandrxjava.di.components.global;
 
+import android.content.Context;
 import android.content.SharedPreferences;
 
 import com.example.features.getuser.UserCache;
@@ -24,7 +25,7 @@ import dagger.Component;
 @Component(modules = {ApplicationModule.class, RepositoryModule.class})
 public interface ApplicationComponent {
 
-    CustomApplication getCustomApplication();
+    Context getCustomApplication();
 
     @Named(ApplicationModule.DEFAULT_PREFERENCES) SharedPreferences getSharedPreferences();
 

@@ -1,6 +1,5 @@
 package com.test.ander.testingcleanarchitecturewithdaggerandrxjava.di.components.global;
 
-import android.content.Context;
 import android.content.res.Resources;
 import android.support.v4.app.FragmentManager;
 
@@ -31,8 +30,6 @@ public interface ActivityComponent {
     void inject(NewUserFragment newUserFragment);
 
     BaseActivity getbaseActivity();
-
-    Context getContext();
 
     FragmentManager getFragmentManager();
 
