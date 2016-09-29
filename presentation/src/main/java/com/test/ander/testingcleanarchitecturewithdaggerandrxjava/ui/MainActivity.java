@@ -63,13 +63,8 @@ public class MainActivity extends BaseActivity implements MVPMainActivity.View {
     @Override
     protected void onStop() {
         eventBus.unregister(this);
+        presenter.activityOnStop();
         super.onStop();
-    }
-
-    @Override
-    protected void onDestroy() {
-        presenter.activityOnDestroy();
-        super.onDestroy();
     }
 
     @Override
@@ -117,7 +112,6 @@ public class MainActivity extends BaseActivity implements MVPMainActivity.View {
 
 
     //View Methods
-
     @Override
     public void saveCurrentUserOnPreferences(UserEntity currentuser) {
         SharedPreferences.Editor editor = sharedPreferences.edit();

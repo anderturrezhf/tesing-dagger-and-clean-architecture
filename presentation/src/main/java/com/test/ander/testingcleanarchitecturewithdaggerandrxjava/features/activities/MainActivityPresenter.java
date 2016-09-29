@@ -1,6 +1,7 @@
 package com.test.ander.testingcleanarchitecturewithdaggerandrxjava.features.activities;
 
 import android.content.res.Resources;
+import android.util.Log;
 
 import com.example.customscopes.PerActivity;
 import com.example.features.activity.MainActivityInteractor;
@@ -41,18 +42,32 @@ public class MainActivityPresenter implements MVPMainActivity.Presenter {
 
     @Override
     public void activityOnCreate() {
+        Log.d("TEST", "activityOnCreate: ");
         this.interactor.setPreviousCurrentUserFromPreferences(this.view.getPreviousCurrentUserFromPreferencesIfAny())
-                .subscribe(userEntity -> {
-                            this.view.updateCurrentUserLayoutInfo(userEntity);
-                        },
-                        throwable -> this.view.setNoUserStateLayout());
+                .subscribe(userEntity ->{
+                    this.view.updateCurrentUserLayoutInfo(userEntity);
+                    Log.d("TEST", "activityOnCreate: " + userEntity.getAlias());
+                } ,
+                        throwable -> {
+                            this.view.setNoUserStateLayout();
+                            Log.d("TEST", "activityOnCreate: null user" );
+                        });
     }
 
     @Override
-    public void activityOnDestroy() {
+    public void activityOnStop() {
+        Log.d("TEST", "activityOnStop: ");
         this.interactor.getCurrentUser()
-                .subscribe(userEntity -> this.view.saveCurrentUserOnPreferences(userEntity),
-                        throwable -> {});
+                .subscribe(userEntity -> {
+                    this.view.saveCurrentUserOnPreferences(userEntity);
+                    Log.d("TEST", "activityOnStop: " + userEntity.getAlias());
+
+                        },
+                        throwable -> {
+                            this.view.saveCurrentUserOnPreferences(null);
+                            Log.d("TEST", "activityOnStop: null user" );
+
+                        });
     }
 
     @Override

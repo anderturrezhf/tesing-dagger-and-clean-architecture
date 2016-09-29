@@ -43,7 +43,7 @@ public interface MVPMainActivity {
 
         void activityOnCreate();
 
-        void activityOnDestroy();
+        void activityOnStop();
 
         void backButtonPressed();
     }
