@@ -18,9 +18,6 @@ import dagger.Provides;
 @Module
 public class UseCaseModule {
 
-    public UseCaseModule() {
-    }
-
     @PerActivity
     @Provides
     RegisterNewUserUseCase providesGetUserUserCase(RegisterNewUserInteractor interactor){

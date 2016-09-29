@@ -15,9 +15,6 @@ import dagger.Provides;
 @Module
 public class PresenterModule {
 
-    public PresenterModule() {
-    }
-
     @PerActivity
     @Provides
     MVPNewUserRegistration.Presenter providesMVPGetUserPresenter(NewUserFragmentPresenter newUserFragmentPresenter){
