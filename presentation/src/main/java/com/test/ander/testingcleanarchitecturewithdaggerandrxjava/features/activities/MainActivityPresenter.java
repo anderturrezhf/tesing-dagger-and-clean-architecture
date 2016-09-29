@@ -42,32 +42,16 @@ public class MainActivityPresenter implements MVPMainActivity.Presenter {
 
     @Override
     public void activityOnCreate() {
-        Log.d("TEST", "activityOnCreate: ");
         this.interactor.setPreviousCurrentUserFromPreferences(this.view.getPreviousCurrentUserFromPreferencesIfAny())
-                .subscribe(userEntity ->{
-                    this.view.updateCurrentUserLayoutInfo(userEntity);
-                    Log.d("TEST", "activityOnCreate: " + userEntity.getAlias());
-                } ,
-                        throwable -> {
-                            this.view.setNoUserStateLayout();
-                            Log.d("TEST", "activityOnCreate: null user" );
-                        });
+                .subscribe(userEntity -> this.view.updateCurrentUserLayoutInfo(userEntity),
+                        throwable -> this.view.setNoUserStateLayout());
     }
 
     @Override
     public void activityOnStop() {
-        Log.d("TEST", "activityOnStop: ");
         this.interactor.getCurrentUser()
-                .subscribe(userEntity -> {
-                    this.view.saveCurrentUserOnPreferences(userEntity);
-                    Log.d("TEST", "activityOnStop: " + userEntity.getAlias());
-
-                        },
-                        throwable -> {
-                            this.view.saveCurrentUserOnPreferences(null);
-                            Log.d("TEST", "activityOnStop: null user" );
-
-                        });
+                .subscribe(userEntity -> this.view.saveCurrentUserOnPreferences(userEntity),
+                        throwable -> {});
     }
 
     @Override

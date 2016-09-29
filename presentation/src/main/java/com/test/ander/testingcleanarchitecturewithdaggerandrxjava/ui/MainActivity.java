@@ -116,12 +116,8 @@ public class MainActivity extends BaseActivity implements MVPMainActivity.View {
     public void saveCurrentUserOnPreferences(UserEntity currentuser) {
         SharedPreferences.Editor editor = sharedPreferences.edit();
 
-        if (currentuser == null) {
-            editor.putString(resources.getString(R.string.current_user_preferences_id), resources.getString(R.string.main_activity_no_user_text));
-        } else {
-            editor.putString(resources.getString(R.string.current_user_preferences_id), currentuser.getAlias());
-            editor.putString(currentuser.getAlias(), gson.toJson(currentuser));
-        }
+        editor.putString(resources.getString(R.string.current_user_preferences_id), currentuser.getAlias());
+        editor.putString(currentuser.getAlias(), gson.toJson(currentuser));
 
         editor.commit();
     }
