@@ -32,6 +32,7 @@ import butterknife.OnClick;
 public class MainActivity extends BaseActivity implements MVPMainActivity.View {
 
     private static final String EMPTY_STRING = "";
+    
     @Inject protected MVPMainActivity.Presenter presenter;
 
     //Main Activity laypout Views
