@@ -29,7 +29,8 @@
         android:id="@+id/userInfoFragmentAgeTextView"
         android:layout_marginBottom="@dimen/user_info_fragment_margin_between_info_text_views"
         android:textColor="@color/color_black"
-        android:text="Age" />
+        android:text="Age"
+        android:textSize="@dimen/new_user_fragment_fields_text_view_size" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -39,7 +40,8 @@
         android:textColor="@color/color_black"
         android:layout_marginBottom="@dimen/user_info_fragment_margin_between_info_text_views"
         android:layout_below="@+id/userInfoFragmentAgeTextView"
-        android:text="City" />
+        android:text="City"
+        android:textSize="@dimen/new_user_fragment_fields_text_view_size" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -48,7 +50,8 @@
         android:id="@+id/userInfoFragmentAliasTextView"
         android:textColor="@color/color_black"
         android:layout_centerHorizontal="true"
-        android:text="Alias" />
+        android:text="Alias"
+        android:textSize="@dimen/new_user_fragment_fields_text_view_size" />
 
     <TextView
         android:text="@string/user_info_fragment_bottom_text"
