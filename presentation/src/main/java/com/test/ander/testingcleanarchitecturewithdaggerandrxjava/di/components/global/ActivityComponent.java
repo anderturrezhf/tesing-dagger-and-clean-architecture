@@ -10,6 +10,8 @@ import com.test.ander.testingcleanarchitecturewithdaggerandrxjava.di.modules.ui.
 import com.test.ander.testingcleanarchitecturewithdaggerandrxjava.features.activities.MVPMainActivity;
 import com.test.ander.testingcleanarchitecturewithdaggerandrxjava.features.getuser.newregistration.MVPNewUserRegistration;
 import com.test.ander.testingcleanarchitecturewithdaggerandrxjava.features.getuser.newregistration.NewUserFragment;
+import com.test.ander.testingcleanarchitecturewithdaggerandrxjava.features.getuser.userinfo.userslist.ListOfUsersFragment;
+import com.test.ander.testingcleanarchitecturewithdaggerandrxjava.features.getuser.userinfo.userslist.MVPUsersList;
 import com.test.ander.testingcleanarchitecturewithdaggerandrxjava.ui.MainActivity;
 import com.test.ander.testingcleanarchitecturewithdaggerandrxjava.ui.basecomponents.BaseActivity;
 import com.test.ander.testingcleanarchitecturewithdaggerandrxjava.ui.basecomponents.BaseFragment;
@@ -28,6 +30,7 @@ public interface ActivityComponent {
 
     void inject(MainActivity mainActivity);
     void inject(NewUserFragment newUserFragment);
+    void inject(ListOfUsersFragment listOfUsersFragment);
 
     BaseActivity getbaseActivity();
 
@@ -38,4 +41,6 @@ public interface ActivityComponent {
     MVPNewUserRegistration.Presenter getUserRegistrationFragmentPresenter();
 
     MVPMainActivity.Presenter getMainActivityPresenter();
+
+    MVPUsersList.Presenter getUsersListPresenter();
 }
