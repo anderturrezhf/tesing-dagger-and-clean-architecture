@@ -2,6 +2,8 @@ package com.test.ander.testingcleanarchitecturewithdaggerandrxjava.features.acti
 
 import com.example.features.getuser.UserEntity;
 
+import java.util.ArrayList;
+
 /**
  * Created by Ander Túrrez on 26/09/16.
  */
@@ -19,7 +21,11 @@ public interface MVPMainActivity {
 
         void saveCurrentUserOnPreferences(UserEntity currentuser);
 
+        void saveListOfUsersOnPreferences(ArrayList<UserEntity> usersList);
+
         UserEntity getPreviousCurrentUserFromPreferencesIfAny();
+
+        ArrayList<UserEntity> getUsersListFromPreferencesIfAny();
 
         boolean isBackPressedFromActivity();
 
