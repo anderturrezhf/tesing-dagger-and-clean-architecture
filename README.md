@@ -5,7 +5,10 @@ project on gradle files and structure for a clean architecture with the dependen
 framework. I have chosen to use 3 layers: presentation (Android module) and 2 Java modules where
 goes the application related logic implementation (app-business-rules) and the models,
 repository pattern, POJOs according to possible backend logic and other abstractions (enterprise-business-rules).
-Remember the rule that a layer can only "see" layers below it, not above.
+Remember the rule that a layer can only "see" layers below it, not above. The communications
+between layers is done via Interfaces
 
-3. Annotations go above only if they are used on a method. For variables or fields, they go
+3. The package organizations we have used is per feature.
+
+4. Annotations go above only if they are used on a method. For variables or fields, they go
 immediately before they are declared.

@@ -1,0 +1,7 @@
+/**
+ * This is the middle layer of the architecture.
+ *
+ * Here goes the "backend" of the application, things like the different UseCases
+ * and its implementations and the implementations of the innermost layer logic
+ * such as the Repositories for example.
+ */

@@ -1,0 +1,5 @@
+/**
+ * The innermost layer of the structure. Here go all the logic and abstraction that is not at all
+ * related to the application, such as Repository interfaces, POJOs that represent objects that
+ * is send by the backend for example and other abstractions.
+ */

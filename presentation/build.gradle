@@ -1,4 +1,6 @@
 /**
+ * This is the outest layer of the structure.
+ *
  * Here goes all the Gradle related to Android. If something is related to Android (like
  * productFlavours builds, ...) it should go on this gradle file and not on
  * the top file of the project. Right now it contains the basic Android related things
