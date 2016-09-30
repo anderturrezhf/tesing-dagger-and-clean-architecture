@@ -7,6 +7,7 @@
     <color name="color_white">#FFFFFF</color>
     <color name="color_black">#000000</color>
     <color name="color_grey">#999999</color>
+    <color name="color_red">#FF0000</color>
 
     <!-- Save User Button colors -->
     <color name="new_user_fragment_button_pressed_start_color">#345953</color>
