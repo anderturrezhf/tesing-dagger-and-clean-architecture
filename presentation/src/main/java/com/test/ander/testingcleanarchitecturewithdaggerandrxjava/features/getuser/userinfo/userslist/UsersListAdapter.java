@@ -25,7 +25,6 @@ public class UsersListAdapter extends RecyclerView.Adapter<UsersListAdapter.User
 
     @Override
     public UsersViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-
         View itemLayout = LayoutInflater.from(parent.getContext()).inflate(R.layout.users_list_item_layout, parent, false);
 
         return new UsersViewHolder(itemLayout);
@@ -33,7 +32,6 @@ public class UsersListAdapter extends RecyclerView.Adapter<UsersListAdapter.User
 
     @Override
     public void onBindViewHolder(UsersViewHolder viewHolder, int position) {
-
         UserEntity user = this.usersList.get(position);
 
         viewHolder.setUser(user);

@@ -159,13 +159,11 @@ public class MainActivity extends BaseActivity implements MVPMainActivity.View {
 
     @Override
     public ArrayList<UserEntity> getUsersListFromPreferencesIfAny() {
-
         String usersListOnPreferences = sharedPreferences.getString(resources.getString(R.string.list_of_users_preferences_id), resources.getString(R.string.main_activity_no_user_text));
 
         if(!usersListOnPreferences.equals(resources.getString(R.string.main_activity_no_user_text))){
             return gson.fromJson(usersListOnPreferences, new TypeToken<ArrayList<UserEntity>>(){}.getType());
         } else {
-
             return new ArrayList<>();
         }
     }

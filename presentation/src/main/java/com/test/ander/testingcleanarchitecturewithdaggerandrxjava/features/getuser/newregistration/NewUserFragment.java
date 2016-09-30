@@ -57,7 +57,6 @@ public class NewUserFragment extends BaseFragment implements MVPNewUserRegistrat
     }
 
     //View Methods
-
     @Override
     public String getUserName() {
         return nameEditText.getText().toString();

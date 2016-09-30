@@ -58,7 +58,6 @@ public class NewUserFragmentPresenter implements MVPNewUserRegistration.Presente
     }
 
     private boolean checkIfelementIsEmptyOrNull(String element) {
-
         return element == null || element.isEmpty();
     }
 

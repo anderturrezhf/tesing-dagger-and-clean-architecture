@@ -15,9 +15,6 @@ import dagger.Provides;
 @Module
 public class RepositoryModule {
 
-    public RepositoryModule() {
-    }
-
     @Singleton
     @Provides
     UserRepository providesUserRepository(UserDataRepository userDataRepository){

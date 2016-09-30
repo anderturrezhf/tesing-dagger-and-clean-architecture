@@ -9,11 +9,15 @@ import rx.Observable;
  */
 
 public interface UserCache {
-
     Observable<UserEntity> saveUserToLocalCache(UserEntity user);
+
     Observable<UserEntity> getUserById(String id);
+
     void deleteLocalCache();
+
     boolean existsUserOnLocalCache(String userId);
+
     Observable<ArrayList<UserEntity>> getAllUsersOnLocalCache();
+
     Observable<ArrayList<UserEntity>> saveUsersToLocalCache(ArrayList<UserEntity> usersList);
 }
