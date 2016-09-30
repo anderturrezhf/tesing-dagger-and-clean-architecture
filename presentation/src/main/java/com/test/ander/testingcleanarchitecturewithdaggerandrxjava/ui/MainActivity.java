@@ -180,7 +180,7 @@ public class MainActivity extends BaseActivity implements MVPMainActivity.View {
 
     @Override
     public void performActivityOnBackPressed() {
-        this.finish();
+        super.onBackPressed();
     }
 
     @Override
