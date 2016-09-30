@@ -3,25 +3,26 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
 
+    <!-- General dimens common to all views-->
+    <dimen name="fragment_layout_padding">5dp</dimen>
+    <dimen name="button_with_background_padding">10dp</dimen>
+    <dimen name="fragment_title_size">24sp</dimen>
+
     <!-- Margins-->
     <dimen name="current_user_textviews_bottom_margin">15dp</dimen>
     <dimen name="new_user_fragment_title_top_margin">25dp</dimen>
     <dimen name="new_user_fragment_margin_between_fields">20dp</dimen>
     <dimen name="new_user_fragment_margin_bewteen_edit_text_and_text_view">8dp</dimen>
     <dimen name="user_info_fragment_margin_between_info_text_views">90dp</dimen>
-
-    <!-- Paddings -->
-    <dimen name="new_user_fragment_layout_padding">5dp</dimen>
-    <dimen name="button_with_background_padding">10dp</dimen>
+    <dimen name="users_list_fragment_margin_title_and_recycler_view">15dp</dimen>
 
     <!-- Text Sizes-->
-    <dimen name="new_user_fragment_title_size">24sp</dimen>
     <dimen name="new_user_fragment_fields_text_view_size">16sp</dimen>
     <dimen name="new_user_fragment_fields_edit_text_size">16sp</dimen>
 
     <!-- Sizes-->
     <dimen name="new_user_fragment_fields_text_view_width">80dp</dimen>
 
-    <!-- -->
+    <!--Bottom Sheet showing part height -->
     <dimen name="main_activity_bottom_sheet_peek_height">40dp</dimen>
 </resources>

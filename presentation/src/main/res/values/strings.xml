@@ -2,6 +2,7 @@
 
     <string name="app_name">Test App</string>
     <string name="current_user_preferences_id">CurrentUser</string>
+
     <!-- Main Activity-->
     <string name="main_activity_new_user_button_text">Register new user!</string>
     <string name="main_activity_current_user_info_button_text">Show current user info</string>
@@ -27,4 +28,7 @@
     <string name="user_info_fragment_alias">and I am also known as %s on different places</string>
     <string name="user_info_fragment_bottom_text">Maybe you have heard about me</string>
     <string name="user_info_fragment_no_current_user">Ooops! Not current user &#8230; yet</string>
+
+    <!-- List of Users Fragment-->
+    <string name="list_of_users_fragment_title">List of Users</string>
 </resources>
