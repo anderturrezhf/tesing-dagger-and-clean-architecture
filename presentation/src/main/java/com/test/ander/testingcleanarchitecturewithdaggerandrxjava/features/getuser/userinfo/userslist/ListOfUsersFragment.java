@@ -2,6 +2,7 @@ package com.test.ander.testingcleanarchitecturewithdaggerandrxjava.features.getu
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
@@ -32,6 +33,7 @@ public class ListOfUsersFragment extends BaseFragment implements MVPUsersList.Vi
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         ButterKnife.bind(this, view);
+        usersList.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
     }
 
     @Override
@@ -39,6 +41,7 @@ public class ListOfUsersFragment extends BaseFragment implements MVPUsersList.Vi
         super.onActivityCreated(savedInstanceState);
         getActivityComponent().inject(this);
         presenter.setView(this);
+        presenter.onActivityCreated();
     }
 
     @Override
@@ -53,18 +56,23 @@ public class ListOfUsersFragment extends BaseFragment implements MVPUsersList.Vi
         super.onStop();
     }
 
-    //Internal methods
-    private void setUpListViewAndAdapter(){
-
-    }
-
     @Override
     protected int getFragmentLayout() {
         return R.layout.list_of_users_fragment_layout;
     }
 
     @Override
-    public void displayUsersList(ArrayList<UserEntity> usersList) {
+    public void displayUpdatedUsersList(ArrayList<UserEntity> usersList) {
         this.usersListAdapter.setUserListsAndRefresh(usersList);
+    }
+
+    @Override
+    public void initializeAndFillUserListWithCurrentUsers(ArrayList<UserEntity> usersList) {
+        if(usersList == null){
+            this.usersListAdapter = new UsersListAdapter(new ArrayList<>());
+        } else {
+            this.usersListAdapter = new UsersListAdapter(usersList);
+        }
+        this.usersList.setAdapter(usersListAdapter);
     }
 }

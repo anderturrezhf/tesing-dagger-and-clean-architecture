@@ -23,4 +23,11 @@ public class ListOfUsersFragmentPresenter implements MVPUsersList.Presenter {
     public void setView(MVPUsersList.View view) {
         this.view = view;
     }
+
+    @Override
+    public void onActivityCreated() {
+        this.interactor.getUsersList()
+                .subscribe(userEntities -> this.view.displayUpdatedUsersList(userEntities),
+                        throwable -> this.view.initializeAndFillUserListWithCurrentUsers(null));
+    }
 }
