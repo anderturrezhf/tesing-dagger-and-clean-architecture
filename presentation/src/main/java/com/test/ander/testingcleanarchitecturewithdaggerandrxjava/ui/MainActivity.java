@@ -10,6 +10,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.features.getuser.UserEntity;
+import com.google.gson.reflect.TypeToken;
 import com.test.ander.testingcleanarchitecturewithdaggerandrxjava.R;
 import com.test.ander.testingcleanarchitecturewithdaggerandrxjava.features.activities.MVPMainActivity;
 import com.test.ander.testingcleanarchitecturewithdaggerandrxjava.features.getuser.newregistration.NewUserFragment;
@@ -19,6 +20,8 @@ import com.test.ander.testingcleanarchitecturewithdaggerandrxjava.features.getus
 import com.test.ander.testingcleanarchitecturewithdaggerandrxjava.ui.basecomponents.BaseActivity;
 
 import org.greenrobot.eventbus.Subscribe;
+
+import java.util.ArrayList;
 
 import javax.inject.Inject;
 
@@ -134,6 +137,15 @@ public class MainActivity extends BaseActivity implements MVPMainActivity.View {
     }
 
     @Override
+    public void saveListOfUsersOnPreferences(ArrayList<UserEntity> usersList) {
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+
+        editor.putString(resources.getString(R.string.list_of_users_preferences_id), gson.toJson(usersList));
+
+        editor.commit();
+    }
+
+    @Override
     public UserEntity getPreviousCurrentUserFromPreferencesIfAny() {
         String previousUserId = sharedPreferences.getString(resources.getString(R.string.current_user_preferences_id), resources.getString(R.string.main_activity_no_user_text));
 
@@ -142,6 +154,19 @@ public class MainActivity extends BaseActivity implements MVPMainActivity.View {
             return gson.fromJson(previousCurrentUserAsString, UserEntity.class);
         } else {
             return null;
+        }
+    }
+
+    @Override
+    public ArrayList<UserEntity> getUsersListFromPreferencesIfAny() {
+
+        String usersListOnPreferences = sharedPreferences.getString(resources.getString(R.string.list_of_users_preferences_id), resources.getString(R.string.main_activity_no_user_text));
+
+        if(!usersListOnPreferences.equals(resources.getString(R.string.main_activity_no_user_text))){
+            return gson.fromJson(usersListOnPreferences, new TypeToken<ArrayList<UserEntity>>(){}.getType());
+        } else {
+
+            return new ArrayList<>();
         }
     }
 

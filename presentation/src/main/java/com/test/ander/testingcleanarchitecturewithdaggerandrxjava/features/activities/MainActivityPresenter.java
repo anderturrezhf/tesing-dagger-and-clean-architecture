@@ -24,7 +24,7 @@ public class MainActivityPresenter implements MVPMainActivity.Presenter {
     private Resources resources;
 
     @Inject
-    public MainActivityPresenter(MainActivityInteractor interactor, Resources resources) {
+    public MainActivityPresenter(MainActivityUseCase interactor, Resources resources) {
         this.interactor = interactor;
         this.resources = resources;
     }
@@ -46,12 +46,18 @@ public class MainActivityPresenter implements MVPMainActivity.Presenter {
         this.interactor.setPreviousCurrentUserFromPreferences(this.view.getPreviousCurrentUserFromPreferencesIfAny())
                 .subscribe(userEntity -> this.view.updateCurrentUserLayoutInfo(userEntity),
                         throwable -> this.view.setNoUserStateLayout());
+        this.interactor.setUsersListOnCache(this.view.getUsersListFromPreferencesIfAny())
+                .subscribe(userEntities -> {},
+                        throwable -> {});
     }
 
     @Override
     public void activityOnStop() {
         this.interactor.getCurrentUser()
                 .subscribe(userEntity -> this.view.saveCurrentUserOnPreferences(userEntity),
+                        throwable -> {});
+        this.interactor.getCurrentUsersList()
+                .subscribe(userEntities -> this.view.saveListOfUsersOnPreferences(userEntities),
                         throwable -> {});
     }
 
