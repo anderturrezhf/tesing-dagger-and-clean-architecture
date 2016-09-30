@@ -92,7 +92,7 @@ project(":enterprise-business-rules") {
         compile fileTree(include: ['*.jar'], dir: 'libs')
     }
 }
-
+//We compile the inner module directly
 project(":app-business-rules") {
     dependencies {
         compile project(':enterprise-business-rules')

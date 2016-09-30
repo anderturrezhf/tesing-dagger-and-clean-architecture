@@ -4,7 +4,8 @@ project on gradle files and structure for a clean architecture with the dependen
 2. Architecture is based on Uncle Bob's Clean Architecture and uses Dagger as dependency injection
 framework. I have chosen to use 3 layers: presentation (Android module) and 2 Java modules where
 goes the application related logic implementation (app-business-rules) and the models,
-repository pattern, POJOs according to possible backend logic and other abstractions (enterprise-business-rules)
+repository pattern, POJOs according to possible backend logic and other abstractions (enterprise-business-rules).
+Remember the rule that a layer can only "see" layers below it, not above.
 
-4. Annotations go above only if they are used on a method. For variables or fields, they go
+3. Annotations go above only if they are used on a method. For variables or fields, they go
 immediately before they are declared.
