@@ -191,7 +191,7 @@ public class MainActivity extends BaseActivity implements MVPMainActivity.View {
     @Override
     public void updateCurrentUserLayoutInfo(UserEntity user) {
         this.titletextView.setText(resources.getString(R.string.user_info_fragment_title, user.getName()));
-        this.ageTextView.setText(resources.getString(R.string.user_info_fragment_age, user.getAge() + ""));
+        this.ageTextView.setText(resources.getString(R.string.user_info_fragment_age, user.getAge()));
         this.cityTextView.setText(resources.getString(R.string.user_info_fragment_city, user.getCity()));
         this.aliasTextView.setText(resources.getString(R.string.user_info_fragment_alias, user.getAlias()));
         this.bottomTextView.setText(resources.getString(R.string.user_info_fragment_bottom_text));

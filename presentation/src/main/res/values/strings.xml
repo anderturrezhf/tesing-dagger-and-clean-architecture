@@ -24,7 +24,7 @@
 
     <!-- User Info Fragment -->
     <string name="user_info_fragment_title">Current user: %s</string>
-    <string name="user_info_fragment_age">I am %s old </string>
+    <string name="user_info_fragment_age">I am %d old </string>
     <string name="user_info_fragment_city">I live in the city of %s</string>
     <string name="user_info_fragment_alias">and I am also known as %s on different places</string>
     <string name="user_info_fragment_bottom_text">Maybe you have heard about me</string>
