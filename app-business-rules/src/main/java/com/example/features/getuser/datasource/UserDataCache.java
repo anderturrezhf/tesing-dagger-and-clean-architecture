@@ -55,7 +55,8 @@ public class UserDataCache implements UserCache {
     }
 
     @Override
-    public Observable<List<UserEntity>> getAllUsersOnLocalCache() {
+    public Observable<ArrayList<UserEntity>> getAllUsersOnLocalCache() {
+
         return Observable.just(new ArrayList<>(userHashMap.values()));
     }
 

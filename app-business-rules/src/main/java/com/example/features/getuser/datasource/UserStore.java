@@ -2,8 +2,7 @@ package com.example.features.getuser.datasource;
 
 import com.example.features.getuser.UserEntity;
 
-import java.util.List;
-
+import java.util.ArrayList;
 import rx.Observable;
 
 /**
@@ -14,7 +13,7 @@ public interface UserStore {
 
     Observable<UserEntity> entityUserDetails(String id);
 
-    Observable<List<UserEntity>> listOfAllEntityUsers();
+    Observable<ArrayList<UserEntity>> listOfAllEntityUsers();
 
     Observable<UserEntity> saveUserToLocalCache(UserEntity user);
 }

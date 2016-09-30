@@ -3,6 +3,7 @@ package com.example.features.getuser.datasource;
 import com.example.features.getuser.UserCache;
 import com.example.features.getuser.UserEntity;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import rx.Observable;
@@ -25,7 +26,7 @@ public class LocalUserStore implements UserStore {
     }
 
     @Override
-    public Observable<List<UserEntity>> listOfAllEntityUsers() {
+    public Observable<ArrayList<UserEntity>> listOfAllEntityUsers() {
         return this.userCache.getAllUsersOnLocalCache();
     }
 

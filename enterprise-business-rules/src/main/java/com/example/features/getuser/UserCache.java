@@ -1,6 +1,6 @@
 package com.example.features.getuser;
 
-import java.util.List;
+import java.util.ArrayList;
 
 import rx.Observable;
 
@@ -14,5 +14,5 @@ public interface UserCache {
     Observable<UserEntity> getUserById(String id);
     void deleteLocalCache();
     boolean existsUserOnLocalCache(String userId);
-    Observable<List<UserEntity>> getAllUsersOnLocalCache();
+    Observable<ArrayList<UserEntity>> getAllUsersOnLocalCache();
 }

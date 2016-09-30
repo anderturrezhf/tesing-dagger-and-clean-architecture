@@ -3,6 +3,7 @@ package com.example.features.getuser;
 
 import com.example.features.getuser.datasource.UserStoreFactory;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -33,7 +34,7 @@ public class UserDataRepository implements UserRepository {
     }
 
     @Override
-    public Observable<List<UserEntity>> getAllUsersList() {
+    public Observable<ArrayList<UserEntity>> getAllUsersList() {
         return this.userStoreFactory.create().listOfAllEntityUsers();
     }
 

@@ -1,6 +1,6 @@
 package com.example.features.getuser;
 
-import java.util.List;
+import java.util.ArrayList;
 
 import rx.Observable;
 
@@ -12,7 +12,7 @@ public interface UserRepository {
 
     Observable<UserEntity> getUser(String id);
 
-    Observable<List<UserEntity>> getAllUsersList();
+    Observable<ArrayList<UserEntity>> getAllUsersList();
 
     Observable<UserEntity> saveUser(UserEntity user);
 

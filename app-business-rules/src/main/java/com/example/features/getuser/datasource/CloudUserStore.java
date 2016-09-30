@@ -2,7 +2,7 @@ package com.example.features.getuser.datasource;
 
 import com.example.features.getuser.UserEntity;
 
-import java.util.List;
+import java.util.ArrayList;
 
 import rx.Observable;
 
@@ -18,7 +18,7 @@ public class CloudUserStore implements UserStore {
     }
 
     @Override
-    public Observable<List<UserEntity>> listOfAllEntityUsers() {
+    public Observable<ArrayList<UserEntity>> listOfAllEntityUsers() {
         return null;
     }
 
