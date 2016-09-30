@@ -11,11 +11,15 @@ import java.util.ArrayList;
 public interface MVPUsersList {
 
     interface View {
-        void displayUsersList(ArrayList<UserEntity> usersList);
+        void displayUpdatedUsersList(ArrayList<UserEntity> usersList);
+
+        void initializeAndFillUserListWithCurrentUsers(ArrayList<UserEntity> usersList);
 
     }
 
     interface Presenter {
         void setView (MVPUsersList.View view);
+
+        void onActivityCreated();
     }
 }
