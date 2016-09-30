@@ -32,7 +32,7 @@ public class ListOfUsersFragmentPresenter implements MVPUsersList.Presenter {
     @Override
     public void onActivityCreated() {
         this.interactor.getUsersList()
-                .subscribe(userEntities -> this.view.displayUpdatedUsersList(userEntities),
+                .subscribe(userEntities -> this.view.initializeAndFillUserListWithCurrentUsers(userEntities),
                         throwable -> {
                             this.view.initializeAndFillUserListWithCurrentUsers(null);
                             this.view.showToastMessage(resources.getString(R.string.list_of_users_fragment_error_retrieving_users));
