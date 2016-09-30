@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/new_user_fragment_bg"
-    android:padding="@dimen/new_user_fragment_layout_padding"
+    android:padding="@dimen/fragment_layout_padding"
     app:layout_behavior="@string/bottom_sheet_behavior"
     app:behavior_hideable="true"
     app:behavior_peekHeight="@dimen/main_activity_bottom_sheet_peek_height">
@@ -15,7 +15,7 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:id="@+id/userInfoFragmentTitleTextView"
-        android:textSize="@dimen/new_user_fragment_title_size"
+        android:textSize="@dimen/fragment_title_size"
         android:layout_marginBottom="@dimen/user_info_fragment_margin_between_info_text_views"
         android:textColor="@color/color_black"
         android:textStyle="normal|bold"
@@ -57,6 +57,6 @@
         android:id="@+id/userInfoFragmentBottomTextView"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:textSize="@dimen/new_user_fragment_title_size"
+        android:textSize="@dimen/fragment_title_size"
         android:textColor="@color/color_black" />
 </RelativeLayout>

@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent" android:layout_height="match_parent"
     android:background="@drawable/new_user_fragment_bg"
-    android:padding="@dimen/new_user_fragment_layout_padding">
+    android:padding="@dimen/fragment_layout_padding">
 
     <TextView
         android:text="@string/new_user_fragment_title"
@@ -11,7 +11,7 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="@dimen/new_user_fragment_title_top_margin"
-        android:textSize="@dimen/new_user_fragment_title_size"
+        android:textSize="@dimen/fragment_title_size"
         android:id="@+id/newUserTextViewTitle"
         android:textColor="@color/color_black"
         android:textStyle="normal|bold" />
