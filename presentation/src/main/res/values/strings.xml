@@ -9,7 +9,6 @@
     <string name="main_activity_current_user_info_button_text">Show current user info</string>
     <string name="main_activity_users_list_button_text">Show Users List</string>
     <string name="main_activity_buttons_separator_label_text">- or -</string>
-    <string name="main_activity_textview_text">Current user: </string>
     <string name="main_activity_no_user_text">None</string>
     <string name="main_activity_new_user_registered">New user correctly registered</string>
     <string name="custom_bottom_sheet_behaviour">.ui.customcomponents.CustomBottomSheetBehaviour</string>
@@ -24,7 +23,7 @@
     <string name="new_user_fragment_show_empty_field_error">Please, fill all the fields for continue the registration</string>
 
     <!-- User Info Fragment -->
-    <string name="user_info_fragment_title">Hi! I am %s</string>
+    <string name="user_info_fragment_title">Current user: %s</string>
     <string name="user_info_fragment_age">I am %s old </string>
     <string name="user_info_fragment_city">I live in the city of %s</string>
     <string name="user_info_fragment_alias">and I am also known as %s on different places</string>
