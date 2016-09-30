@@ -14,6 +14,8 @@ import com.test.ander.testingcleanarchitecturewithdaggerandrxjava.R;
 import com.test.ander.testingcleanarchitecturewithdaggerandrxjava.features.activities.MVPMainActivity;
 import com.test.ander.testingcleanarchitecturewithdaggerandrxjava.features.getuser.newregistration.NewUserFragment;
 import com.test.ander.testingcleanarchitecturewithdaggerandrxjava.features.getuser.newregistration.NewUserSavedEvent;
+import com.test.ander.testingcleanarchitecturewithdaggerandrxjava.features.getuser.userinfo.userslist.ListOfUsersFragment;
+import com.test.ander.testingcleanarchitecturewithdaggerandrxjava.features.getuser.userinfo.userslist.NavigateToUserListEvent;
 import com.test.ander.testingcleanarchitecturewithdaggerandrxjava.ui.basecomponents.BaseActivity;
 
 import org.greenrobot.eventbus.Subscribe;
@@ -31,6 +33,7 @@ public class MainActivity extends BaseActivity implements MVPMainActivity.View {
     //Main Activity laypout Views
     @BindView(R.id.mainActivityRegisterNewUserButton) protected Button registerNewUserButton;
     @BindView(R.id.mainActivityCurrentUserInfoButton) protected Button currentUserInfoButton;
+    @BindView(R.id.mainActivityShowUsersListButton) protected Button usersListButton;
     @BindView(R.id.mainActivityBottomSheet) protected RelativeLayout bottomSheetlayout;
     //Bottom Sheet Views
     @BindView(R.id.userInfoFragmentTitleTextView) protected TextView titletextView;
@@ -42,6 +45,7 @@ public class MainActivity extends BaseActivity implements MVPMainActivity.View {
     private BottomSheetBehavior bottomSheet;
 
     private NewUserFragment newUserFragment;
+    private ListOfUsersFragment listOfUsersFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,10 +91,13 @@ public class MainActivity extends BaseActivity implements MVPMainActivity.View {
     @Override
     protected void initFragmentsIfNecessary() {
         newUserFragment = (NewUserFragment) Fragment.instantiate(this, NewUserFragment.class.getName());
+        listOfUsersFragment = (ListOfUsersFragment) Fragment.instantiate(this, ListOfUsersFragment.class.getName());
 
         fragmentManager.beginTransaction()
                 .add(R.id.fragment_container, newUserFragment, NewUserFragment.class.getName())
                 .hide(newUserFragment)
+                .add(R.id.fragment_container, listOfUsersFragment, ListOfUsersFragment.class.getName())
+                .hide(listOfUsersFragment)
                 .commit();
     }
 
@@ -110,6 +117,10 @@ public class MainActivity extends BaseActivity implements MVPMainActivity.View {
         presenter.showCurrentUserInfoButtonClicked();
     }
 
+    @OnClick(R.id.mainActivityShowUsersListButton)
+    protected void performShowUsersListClick(){
+        presenter.showUsersListButtonClicked();
+    }
 
     //View Methods
     @Override
@@ -173,6 +184,11 @@ public class MainActivity extends BaseActivity implements MVPMainActivity.View {
     }
 
     @Override
+    public void performUserListUpdate() {
+        eventBus.post(new NavigateToUserListEvent());
+    }
+
+    @Override
     public void showToastText(String textToShow) {
         Toast.makeText(this, textToShow, Toast.LENGTH_SHORT).show();
     }
@@ -190,6 +206,25 @@ public class MainActivity extends BaseActivity implements MVPMainActivity.View {
             fragmentManager.beginTransaction()
                     .setCustomAnimations(R.anim.enter_from_right, R.anim.exit_to_right)
                     .hide(newUserFragment)
+                    .commit();
+            fragmentManager.popBackStack();
+            bottomSheet.setState(BottomSheetBehavior.STATE_COLLAPSED);
+        }
+    }
+
+    @Override
+    public void showOrHideUsersListFragment(boolean show) {
+        if(show){
+            fragmentManager.beginTransaction()
+                    .setCustomAnimations(R.anim.enter_from_left, R.anim.exit_to_left)
+                    .show(listOfUsersFragment)
+                    .addToBackStack(ListOfUsersFragment.class.getName())
+                    .commit();
+            bottomSheet.setState(BottomSheetBehavior.STATE_HIDDEN);
+        } else {
+            fragmentManager.beginTransaction()
+                    .setCustomAnimations(R.anim.enter_from_left, R.anim.exit_to_left)
+                    .hide(listOfUsersFragment)
                     .commit();
             fragmentManager.popBackStack();
             bottomSheet.setState(BottomSheetBehavior.STATE_COLLAPSED);

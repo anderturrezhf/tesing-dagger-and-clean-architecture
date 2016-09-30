@@ -48,7 +48,16 @@
                 android:background="@drawable/rounded_corners_button"
                 android:gravity="center_vertical|center_horizontal|center"
                 android:padding="@dimen/button_with_background_padding"
-                android:text="@string/main_activity_new_user_button_text" />
+                android:text="@string/main_activity_new_user_button_text"
+                android:layout_marginBottom="70dp" />
+
+            <Button
+                android:text="@string/main_activity_users_list_button_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/mainActivityShowUsersListButton"
+                android:padding="@dimen/button_with_background_padding"
+                android:background="@drawable/rounded_corners_button" />
         </LinearLayout>
 
 

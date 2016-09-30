@@ -5,10 +5,13 @@ import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.Toast;
 
 import com.example.features.getuser.UserEntity;
 import com.test.ander.testingcleanarchitecturewithdaggerandrxjava.R;
 import com.test.ander.testingcleanarchitecturewithdaggerandrxjava.ui.basecomponents.BaseFragment;
+
+import org.greenrobot.eventbus.Subscribe;
 
 import java.util.ArrayList;
 
@@ -56,11 +59,19 @@ public class ListOfUsersFragment extends BaseFragment implements MVPUsersList.Vi
         super.onStop();
     }
 
+    //EventBus method
+    @Subscribe
+    public void OnUserListUpdateRequest(NavigateToUserListEvent event){
+        presenter.updateUsersList();
+    }
+
+    //Superclass abstract methods implementations
     @Override
     protected int getFragmentLayout() {
         return R.layout.list_of_users_fragment_layout;
     }
 
+    //View Methods
     @Override
     public void displayUpdatedUsersList(ArrayList<UserEntity> usersList) {
         this.usersListAdapter.setUserListsAndRefresh(usersList);
@@ -74,5 +85,10 @@ public class ListOfUsersFragment extends BaseFragment implements MVPUsersList.Vi
             this.usersListAdapter = new UsersListAdapter(usersList);
         }
         this.usersList.setAdapter(usersListAdapter);
+    }
+
+    @Override
+    public void showToastMessage(String message) {
+        Toast.makeText(getActivity(), message, Toast.LENGTH_SHORT).show();
     }
 }

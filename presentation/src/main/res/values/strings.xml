@@ -6,6 +6,7 @@
     <!-- Main Activity-->
     <string name="main_activity_new_user_button_text">Register new user!</string>
     <string name="main_activity_current_user_info_button_text">Show current user info</string>
+    <string name="main_activity_users_list_button_text">Show Users List</string>
     <string name="main_activity_buttons_separator_label_text">- or -</string>
     <string name="main_activity_textview_text">Current user: </string>
     <string name="main_activity_no_user_text">None</string>
@@ -31,4 +32,5 @@
 
     <!-- List of Users Fragment-->
     <string name="list_of_users_fragment_title">List of Users</string>
+    <string name="list_of_users_fragment_error_retrieving_users">Error retrieving users</string>
 </resources>

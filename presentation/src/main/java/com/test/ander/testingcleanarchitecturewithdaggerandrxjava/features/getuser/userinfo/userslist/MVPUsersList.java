@@ -15,11 +15,15 @@ public interface MVPUsersList {
 
         void initializeAndFillUserListWithCurrentUsers(ArrayList<UserEntity> usersList);
 
+        void showToastMessage(String message);
+
     }
 
     interface Presenter {
         void setView (MVPUsersList.View view);
 
         void onActivityCreated();
+
+        void updateUsersList();
     }
 }

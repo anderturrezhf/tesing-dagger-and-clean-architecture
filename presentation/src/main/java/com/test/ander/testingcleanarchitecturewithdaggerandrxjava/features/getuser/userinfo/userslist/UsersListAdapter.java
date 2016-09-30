@@ -28,9 +28,7 @@ public class UsersListAdapter extends RecyclerView.Adapter<UsersListAdapter.User
 
         View itemLayout = LayoutInflater.from(parent.getContext()).inflate(R.layout.users_list_item_layout, parent, false);
 
-        UsersViewHolder userViewHolder = new UsersViewHolder(itemLayout);
-
-        return userViewHolder;
+        return new UsersViewHolder(itemLayout);
     }
 
     @Override

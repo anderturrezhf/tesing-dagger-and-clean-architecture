@@ -13,6 +13,8 @@ public interface MVPMainActivity {
 
         void showOrHideRegisterNewUserFragment(boolean show);
 
+        void showOrHideUsersListFragment(boolean show);
+
         void showOrCollapseBottomSheet(boolean show);
 
         void saveCurrentUserOnPreferences(UserEntity currentuser);
@@ -30,6 +32,8 @@ public interface MVPMainActivity {
         void updateCurrentUserLayoutInfo(UserEntity user);
 
         void setNoUserStateLayout();
+
+        void performUserListUpdate();
     }
 
     interface Presenter {
@@ -38,6 +42,8 @@ public interface MVPMainActivity {
         void createNewUserButtonClicked();
 
         void showCurrentUserInfoButtonClicked();
+
+        void showUsersListButtonClicked();
 
         void newUserSaved(UserEntity userEntity);
 
