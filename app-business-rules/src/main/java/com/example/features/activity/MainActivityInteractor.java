@@ -4,6 +4,8 @@ import com.example.customscopes.PerActivity;
 import com.example.features.getuser.UserEntity;
 import com.example.features.getuser.UserRepository;
 
+import java.util.ArrayList;
+
 import javax.inject.Inject;
 
 import rx.Observable;
@@ -30,4 +32,16 @@ public class MainActivityInteractor implements MainActivityUseCase {
     public Observable<UserEntity> setPreviousCurrentUserFromPreferences(UserEntity user) {
         return userRepository.setCurrentUser(user);
     }
+
+    @Override
+    public Observable<ArrayList<UserEntity>> getCurrentUsersList() {
+        return userRepository.getAllUsersList();
+    }
+
+    @Override
+    public Observable<ArrayList<UserEntity>> setUsersListOnCache(ArrayList<UserEntity> usersList) {
+        return userRepository.saveUsersListOnCache(usersList);
+    }
+
+
 }

@@ -15,4 +15,5 @@ public interface UserCache {
     void deleteLocalCache();
     boolean existsUserOnLocalCache(String userId);
     Observable<ArrayList<UserEntity>> getAllUsersOnLocalCache();
+    Observable<ArrayList<UserEntity>> saveUsersToLocalCache(ArrayList<UserEntity> usersList);
 }

@@ -1,5 +1,6 @@
 package com.example.features.getuser.datasource;
 
+import com.example.features.getuser.UserCache;
 import com.example.features.getuser.UserEntity;
 
 import java.util.ArrayList;
@@ -11,6 +12,12 @@ import rx.Observable;
  */
 
 public class CloudUserStore implements UserStore {
+
+    private UserCache userCache;
+
+    public CloudUserStore(UserCache userCache) {
+        this.userCache = userCache;
+    }
 
     @Override
     public Observable<UserEntity> entityUserDetails(String id) {
@@ -24,6 +31,11 @@ public class CloudUserStore implements UserStore {
 
     @Override
     public Observable<UserEntity> saveUserToLocalCache(UserEntity user) {
+        return null;
+    }
+
+    @Override
+    public Observable<ArrayList<UserEntity>> saveUsersListToLocalCache(ArrayList<UserEntity> usersList) {
         return null;
     }
 }

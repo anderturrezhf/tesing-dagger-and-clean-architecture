@@ -34,4 +34,9 @@ public class LocalUserStore implements UserStore {
     public Observable<UserEntity> saveUserToLocalCache(UserEntity user) {
         return this.userCache.saveUserToLocalCache(user);
     }
+
+    @Override
+    public Observable<ArrayList<UserEntity>> saveUsersListToLocalCache(ArrayList<UserEntity> usersList) {
+        return this.userCache.saveUsersToLocalCache(usersList);
+    }
 }

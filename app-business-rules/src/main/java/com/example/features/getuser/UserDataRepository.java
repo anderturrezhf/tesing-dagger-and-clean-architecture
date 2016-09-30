@@ -4,7 +4,6 @@ package com.example.features.getuser;
 import com.example.features.getuser.datasource.UserStoreFactory;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
@@ -18,9 +17,10 @@ import rx.Observable;
 @Singleton
 public class UserDataRepository implements UserRepository {
 
-    private static final String NO_CURRENT_ERROR_MESSAGE = "No Current User";
+    private static final String NO_CURRENT_USER_ERROR_MESSAGE = "No Current User";
 
     private UserStoreFactory userStoreFactory;
+
     private UserEntity currentUser;
 
     @Inject
@@ -46,7 +46,7 @@ public class UserDataRepository implements UserRepository {
 
     @Override
     public Observable<UserEntity> getCurrentUser() {
-        return this.currentUser == null ? Observable.error(new Throwable(NO_CURRENT_ERROR_MESSAGE)) : Observable.just(currentUser);
+        return this.currentUser == null ? Observable.error(new Throwable(NO_CURRENT_USER_ERROR_MESSAGE)) : Observable.just(currentUser);
     }
 
     @Override
@@ -54,5 +54,10 @@ public class UserDataRepository implements UserRepository {
         this.currentUser = userEntity;
 
         return getCurrentUser();
+    }
+
+    @Override
+    public Observable<ArrayList<UserEntity>> saveUsersListOnCache(ArrayList<UserEntity> usersList) {
+        return this.userStoreFactory.create().saveUsersListToLocalCache(usersList);
     }
 }

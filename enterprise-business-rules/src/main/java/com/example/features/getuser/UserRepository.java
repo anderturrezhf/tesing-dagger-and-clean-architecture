@@ -19,4 +19,6 @@ public interface UserRepository {
     Observable<UserEntity> getCurrentUser();
 
     Observable<UserEntity> setCurrentUser(UserEntity userEntity);
+
+    Observable<ArrayList<UserEntity>> saveUsersListOnCache(ArrayList<UserEntity> usersList);
 }
