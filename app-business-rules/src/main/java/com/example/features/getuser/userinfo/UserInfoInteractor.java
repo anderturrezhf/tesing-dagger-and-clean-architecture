@@ -4,6 +4,8 @@ import com.example.customscopes.PerActivity;
 import com.example.features.getuser.UserEntity;
 import com.example.features.getuser.UserRepository;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import rx.Observable;
@@ -23,6 +25,11 @@ public class UserInfoInteractor implements UserInfoUseCase {
 
     @Override
     public Observable<UserEntity> getCurrentUser() {
-        return userRepository.getCurrentUser();
+        return this.userRepository.getCurrentUser();
+    }
+
+    @Override
+    public Observable<List<UserEntity>> getUsersList() {
+        return this.userRepository.getAllUsersList();
     }
 }

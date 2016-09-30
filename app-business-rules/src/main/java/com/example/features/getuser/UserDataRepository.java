@@ -33,7 +33,7 @@ public class UserDataRepository implements UserRepository {
     }
 
     @Override
-    public Observable<List<UserEntity>> getAllUsers() {
+    public Observable<List<UserEntity>> getAllUsersList() {
         return this.userStoreFactory.create().listOfAllEntityUsers();
     }
 

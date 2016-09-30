@@ -2,6 +2,8 @@ package com.example.features.getuser.userinfo;
 
 import com.example.features.getuser.UserEntity;
 
+import java.util.List;
+
 import rx.Observable;
 
 /**
@@ -11,4 +13,6 @@ import rx.Observable;
 public interface UserInfoUseCase {
 
     Observable<UserEntity> getCurrentUser();
+
+    Observable<List<UserEntity>> getUsersList();
 }
