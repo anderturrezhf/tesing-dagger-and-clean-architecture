@@ -3,6 +3,7 @@
     <string name="app_name">Test App</string>
     <string name="current_user_preferences_id">CurrentUser</string>
     <string name="list_of_users_preferences_id">ListOfUsers</string>
+    <string name="empty_string"></string>
 
     <!-- Main Activity-->
     <string name="main_activity_new_user_button_text">Register new user!</string>

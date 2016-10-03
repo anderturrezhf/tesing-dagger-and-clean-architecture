@@ -89,9 +89,9 @@ public class NewUserFragment extends BaseFragment implements MVPNewUserRegistrat
 
     @Override
     public void cleanAllEditTexts() {
-        nameEditText.setText("");
-        ageEditText.setText("");
-        cityEditText.setText("");
-        aliasEditText.setText("");
+        nameEditText.setText(resources.getString(R.string.empty_string));
+        ageEditText.setText(resources.getString(R.string.empty_string));
+        cityEditText.setText(resources.getString(R.string.empty_string));
+        aliasEditText.setText(resources.getString(R.string.empty_string));
     }
 }

@@ -31,8 +31,6 @@ import butterknife.OnClick;
 
 public class MainActivity extends BaseActivity implements MVPMainActivity.View {
 
-    private static final String EMPTY_STRING = "";
-    
     @Inject protected MVPMainActivity.Presenter presenter;
 
     //Main Activity laypout Views
@@ -202,10 +200,10 @@ public class MainActivity extends BaseActivity implements MVPMainActivity.View {
     @Override
     public void setNoUserStateLayout() {
         this.titletextView.setText(resources.getString(R.string.user_info_fragment_no_current_user));
-        this.ageTextView.setText(EMPTY_STRING);
-        this.cityTextView.setText(EMPTY_STRING);
-        this.aliasTextView.setText(EMPTY_STRING);
-        this.bottomTextView.setText(EMPTY_STRING);
+        this.ageTextView.setText(resources.getString(R.string.empty_string));
+        this.cityTextView.setText(resources.getString(R.string.empty_string));
+        this.aliasTextView.setText(resources.getString(R.string.empty_string));
+        this.bottomTextView.setText(resources.getString(R.string.empty_string));
     }
 
     @Override
