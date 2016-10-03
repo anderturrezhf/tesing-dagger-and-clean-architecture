@@ -32,7 +32,6 @@ public class NewUserFragmentPresenter implements MVPNewUserRegistration.Presente
 
     @Override
     public void saveNewUser() {
-
         if (checkIfElementIsEmptyOrNull(this.view.getUserName(), this.view.getAge(),
                 this.view.getCity(), this.view.getAlias())) {
 
@@ -60,9 +59,7 @@ public class NewUserFragmentPresenter implements MVPNewUserRegistration.Presente
     }
 
     private boolean checkIfElementIsEmptyOrNull(String... elements) {
-
-        for(String element : elements){
-
+        for (String element : elements){
             if(element == null || element.isEmpty()){
                 return true;
             }

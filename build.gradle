@@ -65,7 +65,8 @@ subprojects {
     //Here goes all the configurations for the modules. Compile, testCompile, ....
     configurations {
         compile
-        testCompile
+        testCompile //task for run UnitTest (on regular Java JVM)
+        androidTestCompile //task for run Android API tests (on an Android device/emulator)
     }
 
     apply plugin: 'me.tatarka.retrolambda'
@@ -83,6 +84,9 @@ subprojects {
         compile 'io.reactivex:rxjava:1.1.7'
         //GSON for work with JSON <--> Java
         compile 'com.google.code.gson:gson:2.7'
+        //Test
+        testCompile 'junit:junit:4.12'
+        testCompile 'org.mockito:mockito-core:2.0.86-beta'
     }
 }
 
