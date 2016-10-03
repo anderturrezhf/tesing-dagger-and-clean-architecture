@@ -54,7 +54,12 @@ public class NewUserFragmentPresenter implements MVPNewUserRegistration.Presente
     }
 
     private UserEntity createNewUserEntityForSave() {
-        return new UserEntity(this.view.getUserName(), Integer.valueOf(this.view.getAge()), this.view.getCity(), this.view.getAlias());
+        return new UserEntity.Builder()
+                .setname(this.view.getUserName())
+                .setAge(Integer.valueOf(this.view.getAge()))
+                .setCity(this.view.getCity())
+                .setAlias(this.view.getAlias())
+                .build();
     }
 
     private boolean checkIfelementIsEmptyOrNull(String element) {
