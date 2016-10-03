@@ -33,17 +33,14 @@ public class NewUserFragmentPresenter implements MVPNewUserRegistration.Presente
     @Override
     public void saveNewUser() {
 
-        if (checkIfelementIsEmptyOrNull(this.view.getUserName()) ||
-                checkIfelementIsEmptyOrNull(this.view.getAge()) ||
-                checkIfelementIsEmptyOrNull(this.view.getCity()) ||
-                checkIfelementIsEmptyOrNull(this.view.getAlias())) {
+        if (checkIfElementIsEmptyOrNull(this.view.getUserName(), this.view.getAge(),
+                this.view.getCity(), this.view.getAlias())) {
 
             this.view.showToastAlertWithText(resources.getString(R.string.new_user_fragment_show_empty_field_error));
         } else {
             this.interactor.saveUser(createNewUserEntityForSave())
                     .subscribe(this::userCorrectlySaved,
                             throwable -> this.view.showToastAlertWithText(throwable.getMessage()));
-
         }
     }
 
@@ -62,9 +59,14 @@ public class NewUserFragmentPresenter implements MVPNewUserRegistration.Presente
                 .build();
     }
 
-    private boolean checkIfelementIsEmptyOrNull(String element) {
-        return element == null || element.isEmpty();
+    private boolean checkIfElementIsEmptyOrNull(String... elements) {
+
+        for(String element : elements){
+
+            if(element == null || element.isEmpty()){
+                return true;
+            }
+        }
+        return false;
     }
-
-
 }
