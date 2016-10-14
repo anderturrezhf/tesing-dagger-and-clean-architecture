@@ -11,6 +11,9 @@ import com.test.ander.testingcleanarchitecturewithdaggerandrxjava.R;
 
 import java.util.ArrayList;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 /**
  * Created by Ander Túrrez on 29/09/16.
  */
@@ -50,16 +53,14 @@ public class UsersListAdapter extends RecyclerView.Adapter<UsersListAdapter.User
     //Nested class that represents the Item to display on the RecyclerView
     static class UsersViewHolder extends RecyclerView.ViewHolder{
 
-        private TextView userName;
+        @BindView(R.id.usersListItemTextView) protected TextView userName;
 
         public UsersViewHolder(View itemView) {
             super(itemView);
-
-            this.userName = (TextView) itemView.findViewById(R.id.usersListItemTextView);
+            ButterKnife.bind(this, itemView);
         }
 
         public void setUser(UserEntity user){
-
             this.userName.setText(user.getName());
         }
     }
