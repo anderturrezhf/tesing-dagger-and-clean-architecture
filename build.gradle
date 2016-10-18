@@ -8,7 +8,7 @@ buildscript {
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:2.2.0'
+        classpath 'com.android.tools.build:gradle:2.2.1'
         classpath 'me.tatarka:gradle-retrolambda:3.3.0' //for using retrolambda with Java 6, 7
         classpath 'me.tatarka.retrolambda.projectlombok:lombok.ast:0.2.3.a2' //a modified version of lombok ast that allows lint to run on java 8 sources without error
         classpath 'com.neenbedankt.gradle.plugins:android-apt:1.8' //A Gradle plugin for Android that will set correctly the Annotators Processor generated code
