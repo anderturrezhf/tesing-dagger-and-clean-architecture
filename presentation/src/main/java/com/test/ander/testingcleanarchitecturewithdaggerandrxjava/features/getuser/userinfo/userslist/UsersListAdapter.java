@@ -53,7 +53,8 @@ public class UsersListAdapter extends RecyclerView.Adapter<UsersListAdapter.User
     //Nested class that represents the Item to display on the RecyclerView
     static class UsersViewHolder extends RecyclerView.ViewHolder{
 
-        @BindView(R.id.usersListItemTextView) protected TextView userName;
+        @BindView(R.id.usersListItemTextView)
+        protected TextView userName;
 
         public UsersViewHolder(View itemView) {
             super(itemView);

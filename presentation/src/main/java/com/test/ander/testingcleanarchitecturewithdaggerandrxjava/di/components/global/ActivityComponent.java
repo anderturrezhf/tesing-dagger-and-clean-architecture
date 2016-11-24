@@ -27,7 +27,6 @@ public interface ActivityComponent {
 
     void inject(BaseActivity mainActivity);
     void inject(BaseFragment baseFragment);
-
     void inject(MainActivity mainActivity);
     void inject(NewUserFragment newUserFragment);
     void inject(ListOfUsersFragment listOfUsersFragment);

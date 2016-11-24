@@ -9,6 +9,3 @@ Remember the rule that a layer can only "see" layers below it, not above. The co
 between layers is done via Interfaces
 
 3. The package organizations we have used is per feature.
-
-4. Annotations go above only if they are used on a method. For variables or fields, they go
-immediately before they are declared.

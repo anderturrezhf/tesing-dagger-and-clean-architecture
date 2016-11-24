@@ -26,9 +26,11 @@ import butterknife.ButterKnife;
 
 public class ListOfUsersFragment extends BaseFragment implements MVPUsersList.View {
 
-    @Inject protected MVPUsersList.Presenter presenter;
+    @Inject
+    protected MVPUsersList.Presenter presenter;
 
-    @BindView(R.id.usersListFragmentRecyclerView) protected RecyclerView usersList;
+    @BindView(R.id.usersListFragmentRecyclerView)
+    protected RecyclerView usersList;
 
     private UsersListAdapter usersListAdapter;
 

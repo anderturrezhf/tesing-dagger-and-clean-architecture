@@ -27,11 +27,21 @@ import javax.inject.Named;
 
 public abstract class BaseActivity extends AppCompatActivity {
 
-    @Inject @Named(ApplicationModule.DEFAULT_PREFERENCES) protected SharedPreferences sharedPreferences;
-    @Inject protected FragmentManager fragmentManager;
-    @Inject protected EventBus eventBus;
-    @Inject protected Gson gson;
-    @Inject protected Resources resources;
+    @Inject
+    @Named(ApplicationModule.DEFAULT_PREFERENCES)
+    protected SharedPreferences sharedPreferences;
+
+    @Inject
+    protected FragmentManager fragmentManager;
+
+    @Inject
+    protected EventBus eventBus;
+
+    @Inject
+    protected Gson gson;
+
+    @Inject
+    protected Resources resources;
 
     private ActivityComponent activityComponent;
 

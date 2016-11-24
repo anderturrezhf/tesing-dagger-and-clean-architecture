@@ -27,7 +27,8 @@ public interface ApplicationComponent {
 
     Context getCustomApplication();
 
-    @Named(ApplicationModule.DEFAULT_PREFERENCES) SharedPreferences getSharedPreferences();
+    @Named(ApplicationModule.DEFAULT_PREFERENCES)
+    SharedPreferences getSharedPreferences();
 
     EventBus getEventBus();
 

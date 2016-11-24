@@ -23,13 +23,19 @@ import butterknife.OnClick;
 
 public class NewUserFragment extends BaseFragment implements MVPNewUserRegistration.View {
 
-    @Inject protected MVPNewUserRegistration.Presenter presenter;
+    @Inject
+    protected MVPNewUserRegistration.Presenter presenter;
 
-    @BindView(R.id.newUserFragmentNameEditText) protected EditText nameEditText;
-    @BindView(R.id.newUserFragmentAgeEditText) protected EditText ageEditText;
-    @BindView(R.id.newUserFragmentCityEditText) protected EditText cityEditText;
-    @BindView(R.id.newUserFragmentAliasEditText) protected EditText aliasEditText;
-    @BindView(R.id.newUserFragmentSaveUserButton) protected Button saveNewUserButton;
+    @BindView(R.id.newUserFragmentNameEditText)
+    protected EditText nameEditText;
+    @BindView(R.id.newUserFragmentAgeEditText)
+    protected EditText ageEditText;
+    @BindView(R.id.newUserFragmentCityEditText)
+    protected EditText cityEditText;
+    @BindView(R.id.newUserFragmentAliasEditText)
+    protected EditText aliasEditText;
+    @BindView(R.id.newUserFragmentSaveUserButton)
+    protected Button saveNewUserButton;
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {

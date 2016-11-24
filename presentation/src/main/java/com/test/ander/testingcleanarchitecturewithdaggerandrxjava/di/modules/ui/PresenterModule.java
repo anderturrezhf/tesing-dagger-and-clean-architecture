@@ -32,6 +32,6 @@ public class PresenterModule {
     @PerActivity
     @Provides
     MVPUsersList.Presenter providesMVPUsersListPresenter(ListOfUsersFragmentPresenter listOfUsersFragmentPresenter){
-        return  listOfUsersFragmentPresenter;
+        return listOfUsersFragmentPresenter;
     }
 }

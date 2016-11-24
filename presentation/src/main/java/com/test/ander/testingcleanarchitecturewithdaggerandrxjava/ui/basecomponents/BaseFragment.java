@@ -21,9 +21,14 @@ import javax.inject.Inject;
 
 public abstract class BaseFragment extends Fragment {
 
-    @Inject protected Context context;
-    @Inject protected Resources resources;
-    @Inject protected EventBus eventBus;
+    @Inject
+    protected Context context;
+
+    @Inject
+    protected Resources resources;
+
+    @Inject
+    protected EventBus eventBus;
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {

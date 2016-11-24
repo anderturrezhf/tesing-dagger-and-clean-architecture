@@ -1,6 +1,6 @@
 package com.test.ander.testingcleanarchitecturewithdaggerandrxjava.ui;
 
-import android.app.Application;
+import android.support.multidex.MultiDexApplication;
 
 import com.test.ander.testingcleanarchitecturewithdaggerandrxjava.di.components.global.ApplicationComponent;
 import com.test.ander.testingcleanarchitecturewithdaggerandrxjava.di.components.global.DaggerApplicationComponent;
@@ -11,7 +11,7 @@ import com.test.ander.testingcleanarchitecturewithdaggerandrxjava.di.modules.glo
  * Created by Ander Túrrez on 23/09/16.
  */
 
-public class CustomApplication extends Application {
+public class CustomApplication extends MultiDexApplication {
 
     private ApplicationComponent applicationComponent;
 

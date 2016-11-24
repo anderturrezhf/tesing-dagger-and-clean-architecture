@@ -31,19 +31,36 @@ import butterknife.OnClick;
 
 public class MainActivity extends BaseActivity implements MVPMainActivity.View {
 
-    @Inject protected MVPMainActivity.Presenter presenter;
+    @Inject
+    protected MVPMainActivity.Presenter presenter;
 
     //Main Activity laypout Views
-    @BindView(R.id.mainActivityRegisterNewUserButton) protected Button registerNewUserButton;
-    @BindView(R.id.mainActivityCurrentUserInfoButton) protected Button currentUserInfoButton;
-    @BindView(R.id.mainActivityShowUsersListButton) protected Button usersListButton;
-    @BindView(R.id.mainActivityBottomSheet) protected RelativeLayout bottomSheetlayout;
+    @BindView(R.id.mainActivityRegisterNewUserButton)
+    protected Button registerNewUserButton;
+
+    @BindView(R.id.mainActivityCurrentUserInfoButton)
+    protected Button currentUserInfoButton;
+
+    @BindView(R.id.mainActivityShowUsersListButton)
+    protected Button usersListButton;
+
+    @BindView(R.id.mainActivityBottomSheet)
+    protected RelativeLayout bottomSheetlayout;
     //Bottom Sheet Views
-    @BindView(R.id.userInfoFragmentTitleTextView) protected TextView titletextView;
-    @BindView(R.id.userInfoFragmentAgeTextView) protected TextView ageTextView;
-    @BindView(R.id.userInfoFragmentCityTextView) protected TextView cityTextView;
-    @BindView(R.id.userInfoFragmentAliasTextView) protected TextView aliasTextView;
-    @BindView(R.id.userInfoFragmentBottomTextView) protected TextView bottomTextView;
+    @BindView(R.id.userInfoFragmentTitleTextView)
+    protected TextView titletextView;
+
+    @BindView(R.id.userInfoFragmentAgeTextView)
+    protected TextView ageTextView;
+
+    @BindView(R.id.userInfoFragmentCityTextView)
+    protected TextView cityTextView;
+
+    @BindView(R.id.userInfoFragmentAliasTextView)
+    protected TextView aliasTextView;
+
+    @BindView(R.id.userInfoFragmentBottomTextView)
+    protected TextView bottomTextView;
 
     private BottomSheetBehavior bottomSheet;
 
